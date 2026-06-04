@@ -5,7 +5,7 @@ export default function Home() {
       {/* NAV */}
       <nav className="flex justify-between items-center px-12 pt-10">
         <img
-          src="/logo.png"
+          src="/logo.webp"
           alt="Volte Face"
           className="h-32 w-auto"
         />
@@ -34,7 +34,7 @@ export default function Home() {
         {/* Droite — carte image */}
         <div className="relative overflow-hidden" style={{ minHeight: "750px" }}>
           <img
-            src="/header.png"
+            src="/header.webp"
             alt=""
             aria-hidden
             className="absolute inset-0 w-full h-full object-cover"
