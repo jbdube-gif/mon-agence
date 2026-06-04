@@ -24,3 +24,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes draw-ellipse {
+  from { stroke-dashoffset: 219; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes draw-ellipse-replay {
+  from { stroke-dashoffset: 219; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.ellipse-draw {
+  stroke-dasharray: 219;
+  stroke-dashoffset: 219;
+  animation: draw-ellipse 1s ease forwards;
+}
+
+.vous-wrapper:hover .ellipse-draw {
+  animation: draw-ellipse-replay 1s ease forwards;
+}
