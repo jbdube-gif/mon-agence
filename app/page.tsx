@@ -5,7 +5,7 @@ export default function Home() {
       {/* NAV */}
       <nav className="flex justify-between items-center px-12 pt-10">
         <img
-          src="https://www.figma.com/api/mcp/asset/3b3eb7cc-3bb6-4ff9-8bc3-a66cc4de40f0"
+          src="/logo.png"
           alt="Volte Face"
           className="h-16 w-auto"
         />
@@ -34,21 +34,11 @@ export default function Home() {
         {/* Droite — carte image */}
         <div className="relative overflow-hidden" style={{ minHeight: "750px" }}>
           <img
-            src="https://www.figma.com/api/mcp/asset/3ca08320-d322-4ebe-a66a-cc6e47d09aee"
+            src="/header.png"
             alt=""
             aria-hidden
             className="absolute inset-0 w-full h-full object-cover"
-          />
-          <img
-            src="https://www.figma.com/api/mcp/asset/ed6db0c9-2c3f-4ce0-b45f-fea75a5adb56"
-            alt=""
-            aria-hidden
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <img
-            src="https://www.figma.com/api/mcp/asset/b335d867-79d9-4222-9a9f-e26005338d33"
-            alt="Prismatic light"
-            className="absolute inset-0 w-full h-full object-cover"
+
           />
           <div
             className="absolute bg-[#4159d2] p-8"
