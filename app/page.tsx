@@ -1,65 +1,117 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="bg-white min-h-screen font-[family-name:var(--font-sans)]">
+
+      {/* NAV */}
+      <nav className="flex justify-between items-center px-12 pt-10">
+        <img
+          src="https://www.figma.com/api/mcp/asset/3b3eb7cc-3bb6-4ff9-8bc3-a66cc4de40f0"
+          alt="Volte Face"
+          className="h-16 w-auto"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+        <a href="https://www.linkedin.com/in/jean-benoit-dub%C3%A9-51b15892/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#1e1e1e]">à propos (pendant la construction du site)</a>
+      </nav>
+
+      {/* HERO */}
+      <section className="grid grid-cols-2 gap-0 mt-8 px-12">
+
+        {/* Gauche */}
+        <div className="flex flex-col justify-between pr-8 py-8">
+          <div></div>
+          <p className="text-[#1e1e1e] text-4xl leading-tight">
+            <span className="font-[family-name:var(--font-serif)] font-normal">Agence marketing </span>
+            <span className="font-bold tracking-tight">fractionnelle</span>
           </p>
+          <div className="flex items-center gap-8 text-[#1e1e1e]">
+            <span className="font-[family-name:var(--font-serif)] italic text-xl">STRATÉGIE</span>
+            <span className="w-12 h-px bg-black inline-block"></span>
+            <span className="font-[family-name:var(--font-serif)] italic text-xl">CRÉATION</span>
+            <span className="w-12 h-px bg-black inline-block"></span>
+            <span className="font-[family-name:var(--font-serif)] italic text-xl">FORMATION</span>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* Droite — carte image */}
+        <div className="relative overflow-hidden" style={{ minHeight: "750px" }}>
+          <img
+            src="https://www.figma.com/api/mcp/asset/3ca08320-d322-4ebe-a66a-cc6e47d09aee"
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <img
+            src="https://www.figma.com/api/mcp/asset/ed6db0c9-2c3f-4ce0-b45f-fea75a5adb56"
+            alt=""
+            aria-hidden
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <img
+            src="https://www.figma.com/api/mcp/asset/b335d867-79d9-4222-9a9f-e26005338d33"
+            alt="Prismatic light"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div
+            className="absolute bg-[#4159d2] p-8"
+            style={{ bottom: 0, left: "20%", right: 0 }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <p className="font-[family-name:var(--font-serif)] text-white text-3xl leading-tight mb-3">
+              De la stratégie à l&apos;exécution direct.
+            </p>
+            <p className="text-white text-sm leading-relaxed mb-2">
+              Un directeur marketing d&apos;expérience s&apos;intègre à votre équipe pour donner un alignement stratégique clair, structurer les canaux et piloter la croissance tant et aussi longtemps que vous en avez besoin.
+            </p>
+            <p className="text-white text-sm font-semibold">
+              Oui, c&apos;est un hack pas pire pour avoir des résultats, sans le coût d&apos;une agence ni le poids d&apos;une embauche.
+            </p>
+            <a href="https://www.linkedin.com/in/jean-benoit-dub%C3%A9-51b15892/" className="block text-white text-sm font-medium mt-4 text-right">Voir plus →</a>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="px-12 py-24">
+        <div className="w-fit mx-auto">
+          <p className="font-[family-name:var(--font-serif)] text-[#1e1e1e] text-3xl mb-4">
+            Contact
+          </p>
+          <h2 className="font-[family-name:var(--font-serif)] text-7xl text-black leading-tight">
+            {`Comment on peut `}
+            <span className="relative inline-block px-6 py-1">
+              <span
+                className="text-[#f57a59] font-[family-name:var(--font-sans)] font-bold"
+                style={{ letterSpacing: "-4.9px" }}
+              >
+                vous
+              </span>
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none">
+                <ellipse cx="50" cy="25" rx="48" ry="22" fill="none" stroke="#1e1e1e" strokeWidth="0.5"/>
+              </svg>
+            </span>
+            {` aider?`}
+          </h2>
+          <div className="flex justify-end mt-4">
+            <a
+              href="mailto:jbdube@volteface.ca"
+              className="font-[family-name:var(--font-serif)] underline text-xl text-black"
+            >
+              Écris-nous
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-gray-200 px-12 py-8 flex justify-between items-center text-sm text-[#1e1e1e]">
+        <span>Confidentialité</span>
+        <a href="https://www.linkedin.com/in/jean-benoit-dub%C3%A9-51b15892/" className="hover:underline">LinkedIn</a>
+        <span>t.  418.318.6774</span>
+        <span>
+          <span className="font-[family-name:var(--font-serif)] ">e.</span>
+          {"  "}
+          <a href="mailto:jbdube@volteface.ca" className="font-medium">jbdube@volteface.ca</a>
+        </span>
+      </footer>
+
+    </main>
   );
 }
