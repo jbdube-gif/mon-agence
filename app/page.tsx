@@ -7,7 +7,7 @@ export default function Home() {
         <img
           src="/logo.png"
           alt="Volte Face"
-          className="h-16 w-auto"
+          className="h-32 w-auto"
         />
         <a href="https://www.linkedin.com/in/jean-benoit-dub%C3%A9-51b15892/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#1e1e1e]">à propos (pendant la construction du site)</a>
       </nav>
