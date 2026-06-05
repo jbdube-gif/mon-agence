@@ -62,7 +62,7 @@ export default function Home() {
         {/* Droite — carte image */}
         <div className="relative overflow-hidden h-[50vh] md:h-full">
           <img
-            src="/header.webp"
+            src="/hero.webp"
             alt="Prismatic light"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -71,15 +71,13 @@ export default function Home() {
           style={{ bottom: 0, left: "20%", right: 0 }}
           >
             <p className="font-[family-name:var(--font-serif)] text-xl md:text-3xl leading-tight mb-3">
-              De la stratégie à l&apos;exécution direct.
+              Que des projets d'impact.
             </p>
             <p className="text-white text-sm leading-relaxed mb-2">
-              Un directeur marketing d&apos;expérience s&apos;intègre à votre équipe pour donner un alignement
-              stratégique clair, structurer les canaux et piloter la croissance tant et aussi longtemps que vous en avez besoin.
+              De la création de la marque à sa diffusion. 
+De la stratégie d’affaires à l’optimisation de KPI. 
             </p>
-            <p className="text-white text-sm font-semibold">
-              Oui, c&apos;est un hack pas pire pour avoir des résultats, sans le coût d&apos;une agence ni le poids d&apos;une embauche.
-            </p>
+            
             <a href="#" className="block text-white text-sm font-medium mt-4 text-right">Voir plus →</a>
           </div>
         </div>
@@ -93,6 +91,30 @@ export default function Home() {
           <span className="font-[family-name:var(--font-serif)] italic text-xl">FORMATION</span>
         </div>
       </section>
+
+
+{/* Présentation */}
+<section className="relative overflow-hidden bg-[#00000] px-12 md:px-12 py-16 md:py-12">
+  {/* Contenu */}
+  <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start min-h-[300px] md:min-h-[420px]">
+    {/* Titre */}
+    <h2 className="font-[family-name:var(--font-serif)] text-black text-2xl md:text-2xl mt-[40px]">
+    De la stratégie à l&apos;exécution. Direct.
+    </h2>
+
+    {/* Citation + attribution */}
+    <div className="text-black md:pt-34 font-regular text-md ">
+      <p className="text-md md:text-[14px] leading-relaxed tracking-tight">
+        Un directeur marketing d’expérience s’intègre à votre équipe pour donner un alignement stratégique clair, structurer les canaux et piloter la croissance tant et aussi longtemps que vous en avez besoin. 
+      </p>
+      <p className="font-[family-name:var(--font-sans)] font-semibold text-md sm:text-[14px] mt-8 tracking-tight">
+        Oui, c’est un hack pas pire pour avoir des résultats, 
+        ans le coût d’une agence ni le poids d’une embauche. 
+      </p>
+    </div>
+  </div>
+</section>
+
 {/* EXPERTISE */}
 <section className="px-5 md:px-12 py-16">
   <h2 className="font-[family-name:var(--font-serif)] text-2xl md:text-2xl text-black mb-10">
@@ -185,6 +207,34 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
   </div>
 </section>
 
+{/* TÉMOIGNAGE */}
+<section className="relative overflow-hidden bg-[#000000] px-12 md:px-12 py-16 md:py-24">
+  {/* Image de fond */}
+  <img
+    src="/header.webp"
+    alt=""
+    aria-hidden
+    className="pointer-events-none absolute inset-0 w-full h-full object-cover opacity-90"
+  />
+
+  {/* Contenu */}
+  <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start min-h-[300px] md:min-h-[420px]">
+    {/* Titre */}
+    <h2 className="font-[family-name:var(--font-serif)] text-white text-4xl md:text-4xl">
+      Témoignage.
+    </h2>
+
+    {/* Citation + attribution */}
+    <div className="text-white md:pt-34 font-regular text-md ">
+      <p className="text-md md:text-[14px] leading-relaxed tracking-tight">
+        J’adore travailler avec Volteface. Ils prennent le temps d’écouter, puis de comprendre. Puis après, ils ne perdent pas de temps.
+      </p>
+      <p className="font-[family-name:var(--font-sans)] font-semibold text-md sm:text-[14px] mt-8 tracking-tight">
+        Julien Gobeil Simard, Hoodi.ai
+      </p>
+    </div>
+  </div>
+</section>
   
 {/* Chacun son approche */}
 <section className="px-5 md:px-12 py-16">
@@ -218,7 +268,7 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
         <div
           className="pointer-events-none absolute -inset-px opacity-20 transition-opacity duration-300 group-hover:opacity-100"
           style={{
-            background: "radial-gradient(circle 120px at var(--mx) var(--my), rgba(69, 0, 219, 0.05), transparent 70%)",
+            background: "radial-gradient(circle 120px at var(--mx) var(--my), rgba(69, 0, 219, 0.21), transparent 70%)",
           }}
         />
 <p className="font-[family-name:var(--font-sans)] font-bold text-[#1e1e1e] text-md">{item.titre}</p>        <p className="text-[#1e1e1e] text-sm leading-tight">{item.texte}</p>
