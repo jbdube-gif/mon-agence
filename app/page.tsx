@@ -95,7 +95,7 @@ export default function Home() {
       </section>
 {/* EXPERTISE */}
 <section className="px-5 md:px-12 py-16">
-  <h2 className="font-[family-name:var(--font-serif)] text-4xl md:text-5xl text-black mb-10">
+  <h2 className="font-[family-name:var(--font-serif)] text-2xl md:text-2xl text-black mb-10">
     Grosse expertise.
   </h2>
   <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
@@ -164,23 +164,69 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
           <div
             className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
             style={{
-              background: "radial-gradient(circle 250px at var(--mx) var(--my), rgba(226, 146, 255, 0.25), transparent 50%)",
+              background: "radial-gradient(circle 250px at var(--mx) var(--my), rgba(255, 146, 177, 0.18), transparent 50%)",
             }}
           />
           <p className="font-[family-name:var(--font-serif)] text-[#1e1e1e] text-2xl">{item.titre}</p>
           <div className="flex justify-between items-end">
             <p className="text-[#1e1e1e] text-sm leading-tight max-w-[55%]">{item.texte}</p>
-            <img
-            src={item.icon}
-            alt={item.titre}
-className="w-20 h-20 md:w-28 md:h-28 lg:w-38 lg:h-38 object-contain transition-transform duration-75 ease-out"
-style={{ transform: `translateY(${translateY * 0.3}px)` }}          />
+            <div className="transition-transform duration-300 ease-out group-hover:scale-110 group-hover:-rotate-6 self-center">
+  <img
+    src={item.icon}
+    alt={item.titre}
+    className="w-20 h-20 md:w-28 md:h-28 lg:w-38 lg:h-38 object-contain transition-transform duration-75 ease-out"
+    style={{ transform: `translateY(${translateY * 0.3}px)` }}
+  />
+</div>
           </div>
         </div>
       );
     })}
   </div>
 </section>
+
+  
+{/* Chacun son approche */}
+<section className="px-5 md:px-12 py-16">
+  <h2 className="font-[family-name:var(--font-serif)] text-2xl md:text-2xl text-black mb-10">
+    À chacun son approche.
+  </h2>
+  <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
+    {[
+      {
+        titre: "Consultation et planif stratégique",
+        texte: "Comprendre l’organisation et le marché, puis le transformer en plan d’action concret. Une série d’ateliers et d’activités pour connecter la stratégie d’affaires à l’exécution terrain.",
+      },
+      {
+        titre: "Banque d’heures",
+        texte: "L'approche marketing fractionnelle par excellence. Un nombre d’heures défini à l’avance, à utiliser selon vos besoins, pour faire avancer ce qui compte et combler les lacunes.",
+      },
+      {
+        titre: "Par mandat",
+        texte: "Le go-to-market d’un nouveau produit, la refonte d’un site web, la création d’une campagne de pub ou une série de contenus pour alimenter vos canaux. On s’entend sur le mandat, on s’entend sur le prix, et on livre. Simple comme bonjour.",
+      },
+    ].map((item, i) => (
+      <div
+        key={i}
+        onMouseMove={(e) => {
+          const r = e.currentTarget.getBoundingClientRect();
+          e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+          e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+        }}
+        className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-gray-100/40 backdrop-blur-md border border-[#4159d2] rounded-xl p-6 flex flex-col justify-between min-h-64 overflow-hidden shadow-sm"
+      >
+        <div
+          className="pointer-events-none absolute -inset-px opacity-20 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background: "radial-gradient(circle 120px at var(--mx) var(--my), rgba(69, 0, 219, 0.05), transparent 70%)",
+          }}
+        />
+<p className="font-[family-name:var(--font-sans)] font-bold text-[#1e1e1e] text-md">{item.titre}</p>        <p className="text-[#1e1e1e] text-sm leading-tight">{item.texte}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
 
       {/* CONTACT */}
       <section className="px-5 md:px-12 py-24">
@@ -212,7 +258,7 @@ style={{ transform: `translateY(${translateY * 0.3}px)` }}          />
             </a>
           </div>
         </div>
-      </section>
+      </section>    
 
       {/* FOOTER */}
       <footer className="border-t border-gray-200 px-5 md:px-12 py-8 flex justify-between items-center text-sm text-[#1e1e1e]">
