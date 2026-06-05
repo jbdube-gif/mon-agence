@@ -67,10 +67,10 @@ export default function Home() {
             className="absolute inset-0 w-full h-full object-cover"
           />
            <div
-           className="absolute p-8 md:bg-[#4159d2]"
+           className="absolute p-4 md:p-8 md:bg-[#4159d2]"
           style={{ bottom: 0, left: "20%", right: 0 }}
           >
-            <p className="font-[family-name:var(--font-serif)] text-white text-3xl leading-tight mb-3">
+            <p className="font-[family-name:var(--font-serif)] text-xl md:text-3xl leading-tight mb-3">
               De la stratégie à l&apos;exécution direct.
             </p>
             <p className="text-white text-sm leading-relaxed mb-2">
@@ -98,53 +98,52 @@ export default function Home() {
   <h2 className="font-[family-name:var(--font-serif)] text-4xl md:text-5xl text-black mb-10">
     Grosse expertise.
   </h2>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-
+  <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
     {[
       {
         titre: "Stratégie de croissance",
         texte: "Comprendre l'organisation et le marché, puis le bâtir un plan d'action concret. Une série d'ateliers et d'activités pour connecter la stratégie d'affaires à l'exécution terrain.",
-        icon: "/icons/rocket.png"
+        icon: "/icons/rocket.webp"
       },
       {
         titre: "Images de marques",
         texte: "Le 0 to 1, c'est passer d'une idée à une histoire. Mettre les rêves du monde au monde, ça mallure.",
-        icon: "/icons/palette.png"
+        icon: "/icons/palette.webp"
       },
       {
         titre: "Web et performance",
         texte: "Vitrine, landing page, eComm, applicatif et SEO. Tout ce que ça prend pour que le web soit un vecteur de croissance, par une source de maux de tête.",
-        icon: "/icons/mouse.png"
+        icon: "/icons/mouse.webp"
       },
       {
         titre: "Distribution et go-to-market",
         texte: "Google Ads, Meta Ads, Tiktok Ads, imprimé, Infolettre, contenu, SEO, placement média et toutes autres stratégies pour être vu et considéré.",
-        icon: "/icons/instagram.png"
+        icon: "/icons/instagram.webp"
       },
       {
         titre: "Formations",
         texte: "Quels modèles utiliser quand et comment? Prompt engineering 101, création d'agents et automatisation des tâches répétitives.",
-        icon: "/icons/diplome.png"
+        icon: "/icons/diplome.webp"
       },
       {
         titre: "Contenus I.A.",
         texte: "Permettre la créativité à l’échelle en créant un monde unique autour de votre produit et en dénichant une position unique.",
-        icon: "/icons/ia.png"
+        icon: "/icons/ia.webp"
       },
       {
         titre: "Création de contenus",
         texte: "Image, vidéo, audio et toutes sortes d’autres manières de faire rayonner votre produit.",
-        icon: "/icons/micro.png"
+        icon: "/icons/micro.webp"
       },
       {
         titre: "Fidélisation",
         texte: "Fidéliser sa clientèle est un art obscure pour beaucoup, mais pas pour nous. ",
-        icon: "/icons/magnet.png"
+        icon: "/icons/magnet.webp"
       },
       {
         titre: "Stratégie produit et UX",
         texte: "De la recherche de marché à la priorisation de backlog, concevoir des apps, des sites et des assistants, c’est notre core.",
-        icon: "/icons/phone.png"
+        icon: "/icons/phone.webp"
       }
       
       
@@ -160,7 +159,7 @@ export default function Home() {
     e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
     e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
   }}
-className="group relative bg-gray-100/40 backdrop-blur-md rounded-xl p-6 flex flex-col justify-between min-h-64 overflow-hidden shadow-sm"
+className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-gray-100/40 backdrop-blur-md rounded-xl p-6 flex flex-col justify-between min-h-64 overflow-hidden shadow-sm"
 >
           <div
             className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -174,7 +173,7 @@ className="group relative bg-gray-100/40 backdrop-blur-md rounded-xl p-6 flex fl
             <img
             src={item.icon}
             alt={item.titre}
-            className="w-38 h-38 object-contain transition-transform duration-300 ease-out self-center group-hover:scale-105 group-hover:-rotate-3"
+className="w-20 h-20 md:w-28 md:h-28 lg:w-38 lg:h-38 object-contain transition-transform duration-75 ease-out"
 style={{ transform: `translateY(${translateY * 0.3}px)` }}          />
           </div>
         </div>
