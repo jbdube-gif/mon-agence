@@ -38,7 +38,7 @@ export default function Home() {
           alt="Volte Face"
           className="h-15 w-auto"
         />
-        <a href="https://www.linkedin.com/in/jean-benoit-dub%C3%A9-51b15892/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#1e1e1e]">à propos (pendant la construction du site)</a>
+        <a href="https://www.linkedin.com/in/jean-benoit-dub%C3%A9-51b15892/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#1e1e1e]">à propos</a>
       </nav>
 
       {/* HERO */}
@@ -153,17 +153,29 @@ export default function Home() {
       const rot = startRot + (endRot - startRot) * progress;
       const translateY = (PARALLAX[i] ?? -40) * progress;
       return (
-        <div key={i} className="border border-gray-200 rounded-xl p-6 flex flex-col justify-between min-h-64 overflow-hidden">
+        <div
+  key={i}
+  onMouseMove={(e) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+  }}
+className="group relative bg-gray-100/40 backdrop-blur-md rounded-xl p-6 flex flex-col justify-between min-h-64 overflow-hidden shadow-sm"
+>
+          <div
+            className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            style={{
+              background: "radial-gradient(circle 250px at var(--mx) var(--my), rgba(226, 146, 255, 0.25), transparent 50%)",
+            }}
+          />
           <p className="font-[family-name:var(--font-serif)] text-[#1e1e1e] text-2xl">{item.titre}</p>
           <div className="flex justify-between items-end">
             <p className="text-[#1e1e1e] text-sm leading-tight max-w-[55%]">{item.texte}</p>
             <img
-              src={item.icon}
-              alt={item.titre}
-              className="w-38 h-38 object-contain transition-transform duration-75 ease-out self-center"
-
-style={{ transform: `translateY(${translateY * 0.3}px) rotate(${rot}deg)` }}
-            />
+            src={item.icon}
+            alt={item.titre}
+            className="w-38 h-38 object-contain transition-transform duration-300 ease-out self-center group-hover:scale-105 group-hover:-rotate-3"
+style={{ transform: `translateY(${translateY * 0.3}px)` }}          />
           </div>
         </div>
       );
@@ -205,7 +217,6 @@ style={{ transform: `translateY(${translateY * 0.3}px) rotate(${rot}deg)` }}
 
       {/* FOOTER */}
       <footer className="border-t border-gray-200 px-5 md:px-12 py-8 flex justify-between items-center text-sm text-[#1e1e1e]">
-        <span>Confidentialité</span>
         <a href="https://www.linkedin.com/in/jean-benoit-dub%C3%A9-51b15892/" className="hover:underline">LinkedIn</a>
         <span>t.  418.318.6774</span>
         <span>
