@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
+
 // Plages de rotation uniques par index [startDeg, endDeg]
 const ROTATIONS: [number, number][] = [
   [-15,   5],
@@ -81,8 +82,8 @@ const COULEUR_CERCLE: Record<string, string> = {
 };
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(0);
-
+const [scrollY, setScrollY] = useState(0);
+const [menuOuvert, setMenuOuvert] = useState(false);
 const [carteActive, setCarteActive] = useState(CARTE_DEFAUT);
 const [visible, setVisible] = useState(true);
 const [motActif, setMotActif] = useState<string | null>(null);
@@ -96,7 +97,7 @@ const choisirCarte = (categorie: string) => {
     setTimeout(() => {
       setCarteActive(CARTE_DEFAUT);
       setVisible(true);
-    }, 200);
+    }, 20);
     return;
   }
 
@@ -120,15 +121,19 @@ const choisirCarte = (categorie: string) => {
 
   // progress : 0 au top, 1 quand on a scrollé 800px
   const progress = Math.min(scrollY / 800, 1);
-  const MotCercle = ({ mot }: { mot: string }) => {
+  const MotCercle = ({ mot, grand }: { mot: string; grand?: boolean }) => {
     const actif = motActif === mot;
     const couleur = COULEUR_CERCLE[mot] ?? "#1e1e1e";
     return (
-      <button
-        onClick={() => choisirCarte(mot)}
-        className="group relative inline-block px-5 py-2 cursor-pointer"
-      >
-        <span className="font-[family-name:var(--font-serif)] italic text-xl relative z-10">
+<button
+  onClick={() => choisirCarte(mot)}
+  className="group relative inline-block py-1 cursor-pointer shrink-0"
+  style={{ paddingLeft: "clamp(0.1rem, 0.8vw, 1rem)", paddingRight: "clamp(0.1rem, 0.8vw, 1rem)" }}
+>
+        <span
+          className="font-[family-name:var(--font-serif)] italic relative z-10 whitespace-nowrap"
+          style={{ fontSize: grand ? "1.5rem" : "clamp(0.875rem, 1.5vw, 1.25rem)" }}
+        >
           {mot}
         </span>
         <svg
@@ -153,79 +158,115 @@ const choisirCarte = (categorie: string) => {
   return (
     <main className="bg-white min-h-screen font-[family-name:var(--font-sans)]">
 
-      {/* NAV */}
-      <nav className="flex justify-between items-center px-5 md:px-12 pt-5 pb-4 sticky top-0 bg-white z-50">
-        <img
-          src="/logo.webp"
-          alt="Volte Face"
-          className="h-15 w-auto"
-        />
-        <a href="https://www.linkedin.com/in/jean-benoit-dub%C3%A9-51b15892/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#1e1e1e]">à propos</a>
-      </nav>
+{/* NAV */}
+<nav className="flex justify-between items-center px-5 md:px-12 pt-5 pb-4 sticky top-0 bg-white z-50">
+  <img src="/logo.webp" alt="Volte Face" className="h-15 w-auto" />
+
+  {/* Liens desktop */}
+  <div className="hidden md:flex flex-row items-center gap-8 text-sm font-semibold text-[#1e1e1e]">
+    <a href="#expertise" className="hover:opacity-60 transition-opacity">expertise</a>
+    <a href="#approche" className="hover:opacity-60 transition-opacity">approche</a>
+    <a href="#contact" className="hover:opacity-60 transition-opacity">contact</a>
+  </div>
+
+  {/* Bouton burger mobile */}
+  <button
+    onClick={() => setMenuOuvert(!menuOuvert)}
+    className="md:hidden flex flex-col gap-1.5 cursor-pointer"
+    aria-label="Menu"
+  >
+    <span className={`w-6 h-0.5 bg-[#1e1e1e] transition-transform ${menuOuvert ? "rotate-45 translate-y-2" : ""}`}></span>
+    <span className={`w-6 h-0.5 bg-[#1e1e1e] transition-opacity ${menuOuvert ? "opacity-0" : ""}`}></span>
+    <span className={`w-6 h-0.5 bg-[#1e1e1e] transition-transform ${menuOuvert ? "-rotate-45 -translate-y-2" : ""}`}></span>
+  </button>
+
+  {/* Menu déroulant mobile */}
+  {menuOuvert && (
+    <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 flex flex-col px-5 py-4 gap-4 text-sm font-semibold text-[#1e1e1e]">
+      <a href="#expertise" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Expertise</a>
+      <a href="#approche" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Approche</a>
+      <a href="#contact" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Contact</a>
+    </div>
+  )}
+</nav>
 
       {/* HERO */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-0 px-5 md:px-12 md:h-[calc(100vh-80px)]">
 
-        {/* Gauche */}
-        <div className="flex flex-col justify-between pr-0 md:pr-8 py-8">
+{/* Gauche */}
+<div className="flex flex-col justify-between pr-0 md:pr-8 pt-8 pb-0 min-w-0">
           <div></div>
           <p className="text-[#1e1e1e] text-4xl leading-tight">
             <span className="font-[family-name:var(--font-serif)] ">Services marketing </span>
             <span className="font-bold tracking-tight">fractionnels</span>
           </p>
-<div className="hidden md:flex flex-row items-center gap-8 text-[#1e1e1e]">
+<div
+  className="hidden md:flex flex-row items-center min-w-0 overflow-hidden text-[#1e1e1e]"
+  style={{ gap: "clamp(0.125rem, 1vw, 3.5rem)" }}
+>
   <MotCercle mot="STRATÉGIE" />
-  <span className="w-12 h-px bg-black hidden md:inline-block"></span>
+  <span
+    className="shrink-0 h-px bg-black"
+    style={{ width: "clamp(0.5rem, 2vw, 5rem)" }}
+  />
   <MotCercle mot="CRÉATION" />
-  <span className="w-12 h-px bg-black hidden md:inline-block"></span>
+  <span
+    className="shrink-0 h-px bg-black"
+    style={{ width: "clamp(0.5rem, 2vw, 5rem)" }}
+  />
   <MotCercle mot="FORMATION" />
 </div>
         </div>
 
-        {/* Droite — carte image */}
 <div className="group relative overflow-hidden h-[50vh] md:h-full">
-    <img
+  {/* Image nette */}
+  <img
     src={carteActive.image}
     alt="Prismatic light"
     className="absolute inset-0 w-full h-full object-cover"
   />
-<div
-  className={`absolute p-4 md:p-8 transition-opacity duration-200 ${visible ? "opacity-100" : "opacity-0"}`}
-  style={{ bottom: 0, left: "20%", right: 0 }}
->
-  {/* Couche de couleur de fond : légère par défaut, pleine au survol */}
+
+  {/* Zone basse : verre + couleur, TOUJOURS montée (ne clignote pas) */}
   <div
-    className="absolute inset-0 opacity-60 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
-    style={{ backgroundColor: carteActive.bg }}
-  />
+    className="absolute p-4 md:p-8"
+    style={{ bottom: 0, left: "20%", right: 0, top: "auto" }}
+  >
+    {/* Verre : flou + profondeur, fixe, disparaît seulement au survol */}
+    <div
+      className="absolute inset-0 backdrop-blur-xs transform-gpu shadow-[0_8px_32px_rgba(0,0,0,0..1)] transition-all duration-500 group-hover:backdrop-blur-none group-hover:shadow-none pointer-events-none"
+    />
+    {/* Couleur : fixe aussi */}
+    <div
+      className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+      style={{ backgroundColor: carteActive.bg }}
+    />
 
-  {/* Contenu (au-dessus de la couleur grâce à relative) */}
-  <div className="relative">
-    <p className="font-[family-name:var(--font-serif)] italic text-white text-sm md:text-base mb-4 tracking-wide">
-      {carteActive.intro}
-    </p>
-    <p className="font-[family-name:var(--font-serif)] text-white text-3xl md:text-5xl leading-none mb-3">
-      {carteActive.titre}
-      <span className="font-[family-name:var(--font-sans)] text-xs md:text-sm align-baseline ml-2">
-        {carteActive.suffixe}
-      </span>
-    </p>
-    <p className="text-white text-sm leading-relaxed mb-2">
-      {carteActive.texte}
-    </p>
-    <a href={carteActive.lien} className="block text-white text-sm font-medium mt-4 text-right">Voir plus →</a>
+    {/* Contenu : LUI seul fait le fondu au changement de carte */}
+    <div className={`relative transition-opacity duration-200 ${visible ? "opacity-100" : "opacity-0"}`}>
+      <p className="font-[family-name:var(--font-serif)] italic text-white text-sm md:text-base mb-4 tracking-wide">
+        {carteActive.intro}
+      </p>
+      <p className="font-[family-name:var(--font-serif)] text-white text-3xl md:text-5xl leading-none mb-3">
+        {carteActive.titre}
+        <span className="font-[family-name:var(--font-sans)] text-xs md:text-sm align-baseline ml-2">
+          {carteActive.suffixe}
+        </span>
+      </p>
+      <p className="text-white text-sm leading-relaxed mb-2">
+        {carteActive.texte}
+      </p>
+      <a href={carteActive.lien} className="block text-white text-sm font-medium mt-4 text-right">Voir plus →</a>
+    </div>
   </div>
-
-  </div>
-        </div>
+</div>
 
         {/* STRATÉGIE mobile — visible seulement sous l'image */}
         <div className="md:hidden flex flex-row items-center gap-4 text-[#1e1e1e] py-6">
-  <MotCercle mot="STRATÉGIE" />
-  <span className="w-12 h-px bg-black inline-block"></span>
-  <MotCercle mot="CRÉATION" />
-  <span className="w-12 h-px bg-black inline-block"></span>
-  <MotCercle mot="FORMATION" />
+  <MotCercle mot="STRATÉGIE" grand />
+  <span className="w-8 h-px bg-black inline-block"></span>
+  <MotCercle mot="CRÉATION" grand />
+  <span className="w-8 h-px bg-black inline-block"></span>
+  <MotCercle mot="FORMATION" grand />
 </div>
       </section>
 
@@ -253,7 +294,7 @@ const choisirCarte = (categorie: string) => {
 </section>
 
 {/* EXPERTISE */}
-<section className="px-5 md:px-12 py-16">
+<section id="expertise" className="px-5 md:px-12 py-16 scroll-mt-24">
   <h2 className="font-[family-name:var(--font-serif)] text-2xl md:text-2xl text-black mb-10">
     Grosse expertise.
   </h2>
@@ -375,7 +416,7 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
 </section>
   
 {/* Chacun son approche */}
-<section className="px-5 md:px-12 py-16">
+<section id="approche" className="px-5 md:px-12 py-16 scroll-mt-24">
   <h2 className="font-[family-name:var(--font-serif)] text-2xl md:text-2xl text-black mb-10">
     À chacun son approche.
   </h2>
@@ -415,9 +456,8 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
   </div>
 </section>
 
-
-      {/* CONTACT */}
-      <section className="px-5 md:px-12 py-24">
+{/* CONTACT */}
+<section id="contact" className="px-5 md:px-12 py-24 scroll-mt-24">
         <div className="w-fit mx-auto">
           <p className="font-[family-name:var(--font-serif)] text-[#1e1e1e] text-3xl mb-4">
             Contact
@@ -442,7 +482,7 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
               href="mailto:jbdube@volteface.ca"
               className="font-[family-name:var(--font-serif)] underline text-xl text-black"
             >
-              Écris-nous
+              Écrivez-nous
             </a>
           </div>
         </div>
