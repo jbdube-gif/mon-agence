@@ -43,7 +43,7 @@ const CARTES: Record<string, {
     titre: "Beluga",
     suffixe: "app",
     texte: "Accompagnement I.A. et stratégie de rétention pour aider les ados à se sentir bien.",
-    image: "/cas/beluga2.png",
+    image: "/cas/beluga.png",
     bg: "#8b95e8",
     lien: "https://trouvetaressource.com/en/beluga",
   },
