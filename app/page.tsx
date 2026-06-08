@@ -17,8 +17,100 @@ const ROTATIONS: [number, number][] = [
 // Multiplicateurs de parallaxe uniques par index (px déplacés sur 800px de scroll)
 const PARALLAX: number[] = [-60, 40, -80, 70, -50, 90, -70, 55, -45];
 
+// Cartes par catégorie. Ajoute autant de cartes que tu veux dans chaque tableau.
+const CARTES: Record<string, {
+  intro: string;
+  titre: string;
+  suffixe: string;
+  texte: string;
+  image: string;
+  bg: string;
+  lien: string;
+}[]> = {
+  STRATÉGIE: [
+    {
+    intro: "CAS – TROUVE TA RESSOURCE",
+    titre: "Beluga",
+    suffixe: "app",
+    texte: "Accompagnement I.A. et stratégie de rétention pour aider les ados à se sentir bien.",
+    image: "/cas/beluga.png",
+    bg: "#8b95e8",
+    lien: "#",
+  },
+  ],
+  CRÉATION: [
+    {
+    intro: "CAS – CLINIQUE PELVIA",
+    titre: "engin de contenu",
+    suffixe: "Engin I.A.",
+    texte: "Une direction artistique qui rend la santé pelvienne plus réconfortante.",
+    image: "/cas/pelvia.png",
+    bg: "#F57A59",
+    lien: "#",
+  },
+  ],
+  FORMATION: [
+    {
+    intro: "INFOPRESSE",
+    titre: "I.A. et marketing ",
+    suffixe: "formation",
+    texte: "Prochaines formations offertes : Assistants IA: créez vos assistants personnalisés et automatisez vos tâches répétitives.",
+    image: "/cas/infopresse.png",
+    bg: "#4159D2",
+    lien: "#",
+  },
+  ],
+};
+
+// Carte affichée par défaut au chargement (avant tout clic)
+const CARTE_DEFAUT = {
+  intro: "",
+  titre: "Que des projets d'impact.",
+  suffixe: "",
+  texte: "De la création de la marque à sa diffusion. De la stratégie d'affaires à l'optimisation de KPI.",
+  image: "/hero.webp",
+  bg: "#4159d2",
+  lien: "#",
+};
+
+// Couleur du cercle par catégorie
+const COULEUR_CERCLE: Record<string, string> = {
+  "STRATÉGIE": "#4159d2",
+  "CRÉATION": "#f57a59",
+  "FORMATION": "#D543AA",
+};
+
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
+
+const [carteActive, setCarteActive] = useState(CARTE_DEFAUT);
+const [visible, setVisible] = useState(true);
+const [motActif, setMotActif] = useState<string | null>(null);
+
+// Clic sur un mot : bascule la carte + le cercle
+const choisirCarte = (categorie: string) => {
+  // Si on reclique sur le mot déjà actif → retour par défaut
+  if (motActif === categorie) {
+    setMotActif(null);
+    setVisible(false);
+    setTimeout(() => {
+      setCarteActive(CARTE_DEFAUT);
+      setVisible(true);
+    }, 200);
+    return;
+  }
+
+  const cartes = CARTES[categorie];
+  if (!cartes || cartes.length === 0) return;
+  const hasard = cartes[Math.floor(Math.random() * cartes.length)];
+
+  setMotActif(categorie);
+  setVisible(false);
+  setTimeout(() => {
+    setCarteActive(hasard);
+    setVisible(true);
+  }, 200);
+};
 
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
@@ -28,6 +120,36 @@ export default function Home() {
 
   // progress : 0 au top, 1 quand on a scrollé 800px
   const progress = Math.min(scrollY / 800, 1);
+  const MotCercle = ({ mot }: { mot: string }) => {
+    const actif = motActif === mot;
+    const couleur = COULEUR_CERCLE[mot] ?? "#1e1e1e";
+    return (
+      <button
+        onClick={() => choisirCarte(mot)}
+        className="group relative inline-block px-5 py-2 cursor-pointer"
+      >
+        <span className="font-[family-name:var(--font-serif)] italic text-xl relative z-10">
+          {mot}
+        </span>
+        <svg
+          className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${
+            actif ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+          }`}
+          viewBox="0 0 100 50"
+          preserveAspectRatio="none"
+        >
+<ellipse
+  cx="50" cy="25" rx="48" ry="22"
+  fill="none"
+  stroke={couleur}
+  strokeWidth="1"
+  className={`cercle-trace ${actif ? "cercle-actif" : ""}`}
+/>
+      </svg>
+      
+      </button>
+    );
+  };
   return (
     <main className="bg-white min-h-screen font-[family-name:var(--font-sans)]">
 
@@ -51,45 +173,60 @@ export default function Home() {
             <span className="font-[family-name:var(--font-serif)] ">Services marketing </span>
             <span className="font-bold tracking-tight">fractionnels</span>
           </p>
-<div className="hidden md:flex flex-row items-center gap-8 text-[#1e1e1e]">            <span className="font-[family-name:var(--font-serif)] italic text-xl">STRATÉGIE</span>
-            <span className="w-12 h-px bg-black hidden md:inline-block"></span>
-            <span className="font-[family-name:var(--font-serif)] italic text-xl">CRÉATION</span>
-            <span className="w-12 h-px bg-black hidden md:inline-block"></span>
-            <span className="font-[family-name:var(--font-serif)] italic text-xl">FORMATION</span>
-          </div>
+<div className="hidden md:flex flex-row items-center gap-8 text-[#1e1e1e]">
+  <MotCercle mot="STRATÉGIE" />
+  <span className="w-12 h-px bg-black hidden md:inline-block"></span>
+  <MotCercle mot="CRÉATION" />
+  <span className="w-12 h-px bg-black hidden md:inline-block"></span>
+  <MotCercle mot="FORMATION" />
+</div>
         </div>
 
         {/* Droite — carte image */}
-        <div className="relative overflow-hidden h-[50vh] md:h-full">
-          <img
-            src="/hero.webp"
-            alt="Prismatic light"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-           <div
-           className="absolute p-4 md:p-8 md:bg-[#4159d2]"
-          style={{ bottom: 0, left: "20%", right: 0 }}
-          >
-            <p className="font-[family-name:var(--font-serif)] text-xl md:text-3xl leading-tight mb-3">
-              Que des projets d'impact.
-            </p>
-            <p className="text-white text-sm leading-relaxed mb-2">
-              De la création de la marque à sa diffusion. 
-De la stratégie d’affaires à l’optimisation de KPI. 
-            </p>
-            
-            <a href="#" className="block text-white text-sm font-medium mt-4 text-right">Voir plus →</a>
-          </div>
+<div className="group relative overflow-hidden h-[50vh] md:h-full">
+    <img
+    src={carteActive.image}
+    alt="Prismatic light"
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+<div
+  className={`absolute p-4 md:p-8 transition-opacity duration-200 ${visible ? "opacity-100" : "opacity-0"}`}
+  style={{ bottom: 0, left: "20%", right: 0 }}
+>
+  {/* Couche de couleur de fond : légère par défaut, pleine au survol */}
+  <div
+    className="absolute inset-0 opacity-60 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+    style={{ backgroundColor: carteActive.bg }}
+  />
+
+  {/* Contenu (au-dessus de la couleur grâce à relative) */}
+  <div className="relative">
+    <p className="font-[family-name:var(--font-serif)] italic text-white text-sm md:text-base mb-4 tracking-wide">
+      {carteActive.intro}
+    </p>
+    <p className="font-[family-name:var(--font-serif)] text-white text-3xl md:text-5xl leading-none mb-3">
+      {carteActive.titre}
+      <span className="font-[family-name:var(--font-sans)] text-xs md:text-sm align-baseline ml-2">
+        {carteActive.suffixe}
+      </span>
+    </p>
+    <p className="text-white text-sm leading-relaxed mb-2">
+      {carteActive.texte}
+    </p>
+    <a href={carteActive.lien} className="block text-white text-sm font-medium mt-4 text-right">Voir plus →</a>
+  </div>
+
+  </div>
         </div>
 
         {/* STRATÉGIE mobile — visible seulement sous l'image */}
         <div className="md:hidden flex flex-row items-center gap-4 text-[#1e1e1e] py-6">
-          <span className="font-[family-name:var(--font-serif)] italic text-xl">STRATÉGIE</span>
-          <span className="w-12 h-px bg-black inline-block"></span>
-          <span className="font-[family-name:var(--font-serif)] italic text-xl">CRÉATION</span>
-          <span className="w-12 h-px bg-black inline-block"></span>
-          <span className="font-[family-name:var(--font-serif)] italic text-xl">FORMATION</span>
-        </div>
+  <MotCercle mot="STRATÉGIE" />
+  <span className="w-12 h-px bg-black inline-block"></span>
+  <MotCercle mot="CRÉATION" />
+  <span className="w-12 h-px bg-black inline-block"></span>
+  <MotCercle mot="FORMATION" />
+</div>
       </section>
 
 
@@ -227,7 +364,8 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
     {/* Citation + attribution */}
     <div className="text-white md:pt-34 font-regular text-md ">
       <p className="text-md md:text-[14px] leading-relaxed tracking-tight">
-        J’adore travailler avec Volteface. Ils prennent le temps d’écouter, puis de comprendre. Puis après, ils ne perdent pas de temps.
+        J’adore travailler avec Volteface. Ils prennent le temps d’écouter, 
+        puis de comprendre. Puis après, ils ne perdent pas de temps.
       </p>
       <p className="font-[family-name:var(--font-sans)] font-semibold text-md sm:text-[14px] mt-8 tracking-tight">
         Julien Gobeil Simard, Hoodi.ai

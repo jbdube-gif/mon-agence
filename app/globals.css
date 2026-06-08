@@ -44,3 +44,19 @@ body {
 .vous-wrapper:hover .ellipse-draw {
   animation: draw-ellipse-replay 1s ease forwards;
 }
+
+/* Cercle caché par défaut */
+.cercle-trace {
+  stroke-dasharray: 219;
+  stroke-dashoffset: 219;
+}
+
+/* Au survol du bouton : le cercle se trace */
+.group:hover .cercle-trace {
+  animation: draw-ellipse 0.6s ease forwards;
+}
+
+/* Mot actif (cliqué) : le cercle reste tracé en permanence */
+.cercle-actif {
+  stroke-dashoffset: 0.6;
+}
