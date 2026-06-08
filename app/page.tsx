@@ -18,6 +18,15 @@ const ROTATIONS: [number, number][] = [
 // Multiplicateurs de parallaxe uniques par index (px déplacés sur 800px de scroll)
 const PARALLAX: number[] = [-60, 40, -80, 70, -50, 90, -70, 55, -45];
 
+// Titre du hero selon le service. {parts} : la 2e partie est en gras.
+const TITRE_SERVICE: Record<string, { normal: string; bold: string }> = {
+  STRATÉGIE: { normal: "Stratégie ", bold: "de croissance" },
+  CRÉATION: { normal: "Création ", bold: "de marque" },
+  FORMATION: { normal: "Formation ", bold: "en I.A." },
+};
+
+const TITRE_DEFAUT = { normal: "Services marketing ", bold: " fractionnels" };
+
 // Cartes par catégorie. Ajoute autant de cartes que tu veux dans chaque tableau.
 const CARTES: Record<string, {
   intro: string;
@@ -36,6 +45,15 @@ const CARTES: Record<string, {
     texte: "Accompagnement I.A. et stratégie de rétention pour aider les ados à se sentir bien.",
     image: "/cas/beluga.png",
     bg: "#8b95e8",
+    lien: "#",
+  },
+  {
+    intro: "CAS – TROUVE TA RESSOURCE",
+    titre: "Beluga",
+    suffixe: "app",
+    texte: "Accompagnement I.A. et stratégie de rétention pour aider les ados à se sentir bien.",
+    image: "/cas/beluga.png",
+    bg: "#F57A59",
     lien: "#",
   },
   ],
@@ -85,30 +103,46 @@ export default function Home() {
 const [scrollY, setScrollY] = useState(0);
 const [menuOuvert, setMenuOuvert] = useState(false);
 const [carteActive, setCarteActive] = useState(CARTE_DEFAUT);
+const [indexCarte, setIndexCarte] = useState(0); // index dans la catégorie active;
 const [visible, setVisible] = useState(true);
 const [motActif, setMotActif] = useState<string | null>(null);
 
 // Clic sur un mot : bascule la carte + le cercle
 const choisirCarte = (categorie: string) => {
-  // Si on reclique sur le mot déjà actif → retour par défaut
   if (motActif === categorie) {
     setMotActif(null);
     setVisible(false);
     setTimeout(() => {
       setCarteActive(CARTE_DEFAUT);
       setVisible(true);
-    }, 20);
+    }, 200);
     return;
   }
 
   const cartes = CARTES[categorie];
   if (!cartes || cartes.length === 0) return;
-  const hasard = cartes[Math.floor(Math.random() * cartes.length)];
+  const idx = Math.floor(Math.random() * cartes.length);
 
   setMotActif(categorie);
+  setIndexCarte(idx);
   setVisible(false);
   setTimeout(() => {
-    setCarteActive(hasard);
+    setCarteActive(cartes[idx]);
+    setVisible(true);
+  }, 200);
+};
+
+// "Autre projet" : passe à la carte suivante du service en cours
+const carteSuivante = () => {
+  if (!motActif) return;
+  const cartes = CARTES[motActif];
+  if (!cartes || cartes.length <= 1) return;
+  const idx = (indexCarte + 1) % cartes.length; // boucle au début après la dernière
+
+  setIndexCarte(idx);
+  setVisible(false);
+  setTimeout(() => {
+    setCarteActive(cartes[idx]);
     setVisible(true);
   }, 200);
 };
@@ -156,11 +190,13 @@ const choisirCarte = (categorie: string) => {
     );
   };
   return (
-    <main className="bg-white min-h-screen font-[family-name:var(--font-sans)]">
-
+<main id="top" className="bg-white min-h-screen font-[family-name:var(--font-sans)]">
+  
 {/* NAV */}
 <nav className="flex justify-between items-center px-5 md:px-12 pt-5 pb-4 sticky top-0 bg-white z-50">
-  <img src="/logo.webp" alt="Volte Face" className="h-15 w-auto" />
+  <a href="#top" className="cursor-pointer">
+    <img src="/logo.webp" alt="Volte Face" className="h-15 w-auto" />
+  </a>
 
   {/* Liens desktop */}
   <div className="hidden md:flex flex-row items-center gap-8 text-sm font-semibold text-[#1e1e1e]">
@@ -191,34 +227,62 @@ const choisirCarte = (categorie: string) => {
 </nav>
 
       {/* HERO */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-0 px-5 md:px-12 md:h-[calc(100vh-80px)]">
+<section className="grid grid-cols-1 md:grid-cols-2 gap-0 px-5 md:px-12 md:h-[calc(100vh-120px)]">
+
 
 {/* Gauche */}
 <div className="flex flex-col justify-between pr-0 md:pr-8 pt-8 pb-0 min-w-0">
-          <div></div>
-          <p className="text-[#1e1e1e] text-4xl leading-tight">
-            <span className="font-[family-name:var(--font-serif)] ">Services marketing </span>
-            <span className="font-bold tracking-tight">fractionnels</span>
-          </p>
-<div
-  className="hidden md:flex flex-row items-center min-w-0 overflow-hidden text-[#1e1e1e]"
-  style={{ gap: "clamp(0.125rem, 1vw, 3.5rem)" }}
->
-  <MotCercle mot="STRATÉGIE" />
+  <div></div>
+
+  {/* Groupe titre + bouton (compte comme UN seul bloc) */}
+  <div>
+  <p className="text-[#1e1e1e] text-4xl leading-tight">
   <span
-    className="shrink-0 h-px bg-black"
-    style={{ width: "clamp(0.5rem, 2vw, 5rem)" }}
-  />
-  <MotCercle mot="CRÉATION" />
+    key={`normal-${motActif ?? "default"}`}
+    className="font-[family-name:var(--font-serif)] titre-normal-anim"
+  >
+    {(motActif && TITRE_SERVICE[motActif]?.normal) || TITRE_DEFAUT.normal}
+  </span>
+  {" "}
   <span
-    className="shrink-0 h-px bg-black"
-    style={{ width: "clamp(0.5rem, 2vw, 5rem)" }}
-  />
-  <MotCercle mot="FORMATION" />
+    key={`bold-${motActif ?? "default"}`}
+    className="font-bold tracking-tight titre-bold-anim"
+  >
+    {(motActif && TITRE_SERVICE[motActif]?.bold) || TITRE_DEFAUT.bold}
+  </span>
+</p>
+
+    {/* Espace réservé en permanence pour ne rien décaler */}
+    <div className="h-6 mt-2">
+      {motActif && CARTES[motActif] && CARTES[motActif].length > 1 && (
+        <button
+          onClick={carteSuivante}
+          className="text-black text-sm font-medium cursor-pointer hover:opacity-60 transition-opacity"
+        >
+          autre projet →
+        </button>
+      )}
+    </div>
+  </div>
+
+  {/* Rangée de mots */}
+  <div
+    className="hidden md:flex flex-row items-center min-w-0 overflow-hidden text-[#1e1e1e]"
+    style={{ gap: "clamp(0.125rem, 1vw, 3.5rem)" }}
+  >
+    <MotCercle mot="STRATÉGIE" />
+    <span className="shrink-0 h-px bg-black" style={{ width: "clamp(0.5rem, 2vw, 5rem)" }} />
+    <MotCercle mot="CRÉATION" />
+    <span className="shrink-0 h-px bg-black" style={{ width: "clamp(0.5rem, 2vw, 5rem)" }} />
+    <MotCercle mot="FORMATION" />
+  </div>
 </div>
-        </div>
 
 <div className="group relative overflow-hidden h-[50vh] md:h-full">
+ 
+ 
+ 
+ 
   {/* Image nette */}
   <img
     src={carteActive.image}
@@ -233,7 +297,7 @@ const choisirCarte = (categorie: string) => {
   >
     {/* Verre : flou + profondeur, fixe, disparaît seulement au survol */}
     <div
-      className="absolute inset-0 backdrop-blur-xs transform-gpu shadow-[0_8px_32px_rgba(0,0,0,0..1)] transition-all duration-500 group-hover:backdrop-blur-none group-hover:shadow-none pointer-events-none"
+      className="absolute inset-0 backdrop-blur-xs transform-gpu shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-500 group-hover:backdrop-blur-none group-hover:shadow-none pointer-events-none"
     />
     {/* Couleur : fixe aussi */}
     <div
@@ -242,8 +306,8 @@ const choisirCarte = (categorie: string) => {
     />
 
     {/* Contenu : LUI seul fait le fondu au changement de carte */}
-    <div className={`relative transition-opacity duration-200 ${visible ? "opacity-100" : "opacity-0"}`}>
-      <p className="font-[family-name:var(--font-serif)] italic text-white text-sm md:text-base mb-4 tracking-wide">
+<div key={carteActive.titre} className="relative carte-entree">
+        <p className="font-[family-name:var(--font-serif)] italic text-white text-sm md:text-base mb-4 tracking-wide">
         {carteActive.intro}
       </p>
       <p className="font-[family-name:var(--font-serif)] text-white text-3xl md:text-5xl leading-none mb-3">
