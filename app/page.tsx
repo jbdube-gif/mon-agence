@@ -20,9 +20,9 @@ const PARALLAX: number[] = [-60, 40, -80, 70, -50, 90, -70, 55, -45];
 
 // Titre du hero selon le service. {parts} : la 2e partie est en gras.
 const TITRE_SERVICE: Record<string, { normal: string; bold: string }> = {
-  STRATÉGIE: { normal: "Stratégie ", bold: "de croissance" },
-  CRÉATION: { normal: "Création ", bold: "de marque" },
-  FORMATION: { normal: "Formation ", bold: "en I.A." },
+  STRATÉGIE: { normal: "Stratégies ", bold: "essentielles" },
+  CRÉATION: { normal: "Créations ", bold: "intemporelles" },
+  FORMATION: { normal: "Formations ", bold: "substantielles" },
 };
 
 const TITRE_DEFAUT = { normal: "Services marketing ", bold: " fractionnels" };
@@ -43,19 +43,11 @@ const CARTES: Record<string, {
     titre: "Beluga",
     suffixe: "app",
     texte: "Accompagnement I.A. et stratégie de rétention pour aider les ados à se sentir bien.",
-    image: "/cas/beluga.png",
+    image: "/cas/beluga2.png",
     bg: "#8b95e8",
-    lien: "#",
+    lien: "https://trouvetaressource.com/en/beluga",
   },
-  {
-    intro: "CAS – TROUVE TA RESSOURCE",
-    titre: "Beluga",
-    suffixe: "app",
-    texte: "Accompagnement I.A. et stratégie de rétention pour aider les ados à se sentir bien.",
-    image: "/cas/beluga.png",
-    bg: "#F57A59",
-    lien: "#",
-  },
+
   ],
   CRÉATION: [
     {
@@ -65,7 +57,23 @@ const CARTES: Record<string, {
     texte: "Une direction artistique qui rend la santé pelvienne plus réconfortante.",
     image: "/cas/pelvia.png",
     bg: "#F57A59",
-    lien: "#",
+    lien: "https://www.cliniquepelvia.com/",
+  },    {
+    intro: "CAS – DJ TORNADE",
+    titre: "Nol’an Greatest Hits",
+    suffixe: "album I.A.",
+    texte: "Production musicale, composition, image de marque et promotion pour célébrer l’entre-fêtes.",
+    image: "/cas/nol'an.png",
+    bg: "#D543AA",
+    lien: "https://open.spotify.com/intl-fr/album/1bitpcHppdiliuMzI9YO6R?si=DjLdheeVQGyPuujVCXkFlA",
+  },    {
+    intro: "CAS – LMH",
+    titre: "On est braves",
+    suffixe: "production vidéo",
+    texte: "Création d'une vidéo pour enrôler plus de braves à la ligue matinale.",
+    image: "/cas/lmh.png",
+    bg: "#4159D2",
+    lien: "https://www.linkedin.com/posts/la-lmh_mon-bon-ami-jean-benoit-dub%C3%A9-a-%C3%A9t%C3%A9-bien-inspir%C3%A9-activity-7417742447088324609-ve5F?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAABOZeecB4PFDwrA5g7lRbZAwxhJTJvZW1DE",
   },
   ],
   FORMATION: [
@@ -76,7 +84,16 @@ const CARTES: Record<string, {
     texte: "Prochaines formations offertes : Assistants IA: créez vos assistants personnalisés et automatisez vos tâches répétitives.",
     image: "/cas/infopresse.png",
     bg: "#4159D2",
-    lien: "#",
+    lien: "https://www.infopresse.com/formation/assistants-ia-creez-vos-assistants-personnalises-et-automatisez-vos-taches-repetitives/",
+  },   
+   {
+    intro: "CAS - PREMIER TECH",
+    titre: "Atelier d'accélération numérique",
+    suffixe: "atelier",
+    texte: "200 leaders, 4 heures, 1 objetif : maîtriser l'I.A. pour augmenter l'impact.",
+    image: "/cas/premiertech.png",
+    bg: "#8b95e8",
+    lien: "https://www.google.com/search?sca_esv=17317455c5eb4af0&rlz=1C5CHFA_enCA741CA741&sxsrf=ANbL-n6dSDF2ITHcbY_L3J2_Sy9Cgy7_iQ:1780953669091&udm=7&fbs=ADc_l-bpk8W4E-qsVlOvbGJcDwpnlSr7xQUI8WetOB3ophaMjXwzVj6gWfL0AaSz4mZLK3msMFR2tce-tm0jGmR81nT5vhrCPvuSjp1UcG7tjEK6mShoqxHtwzksJ72KCKcqbt0y2xS8SDxLYKRq1DCrN9oCWSvsAH-YZExIewoPiU8gKXcOkHcXP_VGCWOgjDXVEPAfB0LZ_MZC_1VFdti5yJqai-6eAGU8K_iS-cZEH_M5l0OF3o0&q=premier+tech+tm&sa=X&ved=2ahUKEwji1rq2yfiUAxWHLFkFHWQuAyQQtKgLegQIDxAB&biw=1248&bih=797&dpr=1#fpstate=ive&vld=cid:a560a403,vid:S5yJYzvAWN0,st:0",
   },
   ],
 };
@@ -191,7 +208,7 @@ const carteSuivante = () => {
   };
   return (
 <main id="top" className="bg-white min-h-screen font-[family-name:var(--font-sans)]">
-  
+
 {/* NAV */}
 <nav className="flex justify-between items-center px-5 md:px-12 pt-5 pb-4 sticky top-0 bg-white z-50">
   <a href="#top" className="cursor-pointer">
