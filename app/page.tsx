@@ -400,7 +400,7 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
 {/* EXPERTISE */}
 <section id="expertise" className="px-5 md:px-12 py-16 scroll-mt-24">
   <h2 className="font-[family-name:var(--font-serif)] text-3xl md:text-3xl text-black mb-10">
-    Grosse expertise.
+    Grosse expertise. Gros fun.
   </h2>
   <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
     {[
@@ -408,6 +408,16 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
         titre: "Stratégie de croissance",
         texte: "Comprendre l'organisation et le marché, puis le bâtir un plan d'action concret. Une série d'ateliers et d'activités pour connecter la stratégie d'affaires à l'exécution terrain.",
         icon: "/icons/rocket.webp"
+      },
+       {
+        titre: "Stratégie produit et UX",
+        texte: "De la recherche de marché à la priorisation de backlog, concevoir des apps, des sites et des assistants, c’est notre core.",
+        icon: "/icons/phone.webp"
+      },    
+      {
+        titre: "Formations I.A.",
+        texte: "Quels modèles utiliser quand et comment? Prompt engineering 101, création d'agents et automatisation des tâches répétitives.",
+        icon: "/icons/diplome.webp"
       },
       {
         titre: "Images de marques",
@@ -425,11 +435,6 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
         icon: "/icons/instagram.webp"
       },
       {
-        titre: "Formations",
-        texte: "Quels modèles utiliser quand et comment? Prompt engineering 101, création d'agents et automatisation des tâches répétitives.",
-        icon: "/icons/diplome.webp"
-      },
-      {
         titre: "Contenus I.A.",
         texte: "Permettre la créativité à l’échelle en créant un monde unique autour de votre produit et en dénichant une position unique.",
         icon: "/icons/ia.webp"
@@ -444,11 +449,7 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
         texte: "Fidéliser sa clientèle est un art obscure pour beaucoup, mais pas pour nous. ",
         icon: "/icons/magnet.webp"
       },
-      {
-        titre: "Stratégie produit et UX",
-        texte: "De la recherche de marché à la priorisation de backlog, concevoir des apps, des sites et des assistants, c’est notre core.",
-        icon: "/icons/phone.webp"
-      }
+    
       
       
     ].map((item, i) => {
