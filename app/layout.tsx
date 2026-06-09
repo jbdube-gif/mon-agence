@@ -17,8 +17,30 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata = {
-  title: "Volte Face — Agence marketing fractionnelle",
+  title: "Volteface — Services marketing fractionnels",
   description: "De la stratégie à l'exécution direct.",
+  openGraph: {
+    title: "Volteface — Services marketing fractionnels",
+    description: "De la stratégie à l'exécution direct.",
+    url: "https://www.volteface.ca",
+    siteName: "Volteface",
+    images: [
+      {
+        url: "https://www.volteface.ca/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Volteface — Services marketing fractionnels",
+      },
+    ],
+    locale: "fr_CA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Volteface — Services marketing fractionnels",
+    description: "De la stratégie à l'exécution direct.",
+    images: ["https://www.volteface.ca/og.jpg"],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -47,6 +47,15 @@ const CARTES: Record<string, {
     bg: "#8b95e8",
     lien: "https://trouvetaressource.com/en/beluga",
   },
+      {
+    intro: "PIGEONS",
+    titre: "application web",
+    suffixe: "accompagement stratégique",
+    texte: "Permettre aux travailleurs.euses autonomes et aux entreprises de se rencontrer.",
+    image: "/cas/pigeons.png",
+    bg: "#F57A59",
+    lien: "https://www.nouspigeons.ca/about",
+  },
 
   ],
   CRÉATION: [
@@ -367,11 +376,11 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
 
 
 {/* Présentation */}
-<section className="relative overflow-hidden bg-[#00000] px-12 md:px-12 py-16 md:py-12">
+<section className="relative overflow-hidden bg-[#00000] px-12 md:px-12 py-12 md:py-16">
   {/* Contenu */}
-  <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start min-h-[300px] md:min-h-[420px]">
+  <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
     {/* Titre */}
-    <h2 className="font-[family-name:var(--font-serif)] text-black text-2xl md:text-2xl mt-[40px]">
+    <h2 className="font-[family-name:var(--font-serif)] text-black text-3xl md:text-3xl mt-[40px]">
     De la stratégie à l&apos;exécution. Direct.
     </h2>
 
@@ -390,7 +399,7 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
 
 {/* EXPERTISE */}
 <section id="expertise" className="px-5 md:px-12 py-16 scroll-mt-24">
-  <h2 className="font-[family-name:var(--font-serif)] text-2xl md:text-2xl text-black mb-10">
+  <h2 className="font-[family-name:var(--font-serif)] text-3xl md:text-3xl text-black mb-10">
     Grosse expertise.
   </h2>
   <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
@@ -512,7 +521,7 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
   
 {/* Chacun son approche */}
 <section id="approche" className="px-5 md:px-12 py-16 scroll-mt-24">
-  <h2 className="font-[family-name:var(--font-serif)] text-2xl md:text-2xl text-black mb-10">
+  <h2 className="font-[family-name:var(--font-serif)] text-3xl md:text-3xl text-black mb-10">
     À chacun son approche.
   </h2>
   <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
@@ -542,7 +551,7 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
         <div
           className="pointer-events-none absolute -inset-px opacity-20 transition-opacity duration-300 group-hover:opacity-100"
           style={{
-            background: "radial-gradient(circle 120px at var(--mx) var(--my), rgba(69, 0, 219, 0.21), transparent 70%)",
+            background: "radial-gradient(circle 120px at var(--mx) var(--my), rgba(69, 0, 219, 0.11), transparent 70%)",
           }}
         />
 <p className="font-[family-name:var(--font-sans)] font-bold text-[#1e1e1e] text-md">{item.titre}</p>        <p className="text-[#1e1e1e] text-sm leading-tight">{item.texte}</p>
@@ -561,7 +570,7 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
             {`Comment on peut `}
             <span className="vous-wrapper relative inline-block px-6 py-1">
               <span
-                className="text-[#f57a59] font-[family-name:var(--font-sans)] font-bold"
+                className="text-[#4159D2] font-[family-name:var(--font-sans)] font-bold"
                 style={{ letterSpacing: "-4.9px" }}
               >
                 vous
