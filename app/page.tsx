@@ -87,7 +87,7 @@ const CARTES: Record<string, {
   ],
   FORMATION: [
     {
-    intro: "INFOPRESSE",
+    intro: "FORMATIONS INFOPRESSE",
     titre: "I.A. et marketing ",
     suffixe: "formation",
     texte: "Prochaines formations offertes : Assistants IA: créez vos assistants personnalisés et automatisez vos tâches répétitives.",
