@@ -39,7 +39,7 @@ const CARTES: Record<string, {
 }[]> = {
   STRATÉGIE: [
     {
-    intro: "CAS – TROUVE TA RESSOURCE",
+    intro: "TROUVE TA RESSOURCE",
     titre: "Beluga",
     suffixe: "app",
     texte: "Accompagnement I.A. et stratégie de rétention pour aider les ados à se sentir bien.",
@@ -51,7 +51,7 @@ const CARTES: Record<string, {
   ],
   CRÉATION: [
     {
-    intro: "CAS – CLINIQUE PELVIA",
+    intro: "CLINIQUE PELVIA",
     titre: "engin de contenu",
     suffixe: "Engin I.A.",
     texte: "Une direction artistique qui rend la santé pelvienne plus réconfortante.",
@@ -59,7 +59,7 @@ const CARTES: Record<string, {
     bg: "#F57A59",
     lien: "https://www.cliniquepelvia.com/",
   },    {
-    intro: "CAS – DJ TORNADE",
+    intro: "DJ TORNADE",
     titre: "Nol’an Greatest Hits",
     suffixe: "album I.A.",
     texte: "Production musicale, composition, image de marque et promotion pour célébrer l’entre-fêtes.",
@@ -67,7 +67,7 @@ const CARTES: Record<string, {
     bg: "#D543AA",
     lien: "https://open.spotify.com/intl-fr/album/1bitpcHppdiliuMzI9YO6R?si=DjLdheeVQGyPuujVCXkFlA",
   },    {
-    intro: "CAS – LMH",
+    intro: "LMH",
     titre: "On est braves",
     suffixe: "production vidéo",
     texte: "Création d'une vidéo pour enrôler plus de braves à la ligue matinale.",
@@ -87,7 +87,7 @@ const CARTES: Record<string, {
     lien: "https://www.infopresse.com/formation/assistants-ia-creez-vos-assistants-personnalises-et-automatisez-vos-taches-repetitives/",
   },   
    {
-    intro: "CAS - PREMIER TECH",
+    intro: "PREMIER TECH",
     titre: "Atelier d'accélération numérique",
     suffixe: "atelier",
     texte: "200 leaders, 4 heures, 1 objetif : maîtriser l'I.A. pour augmenter l'impact.",
@@ -270,7 +270,7 @@ const carteSuivante = () => {
 </p>
 
     {/* Espace réservé en permanence pour ne rien décaler */}
-    <div className="h-6 mt-2">
+<div className="h-6 mt-2 hidden md:block">
       {motActif && CARTES[motActif] && CARTES[motActif].length > 1 && (
         <button
           onClick={carteSuivante}
@@ -295,51 +295,65 @@ const carteSuivante = () => {
   </div>
 </div>
 
-<div className="group relative overflow-hidden h-[50vh] md:h-full">
- 
- 
- 
- 
-  {/* Image nette */}
+
+{/* IMAGE HERO — desktop toujours, mobile seulement si pas de catégorie active */}
+<div className={`group relative overflow-hidden h-[50vh] md:h-full ${motActif ? "hidden md:block" : "block"}`}>
   <img
     src={carteActive.image}
     alt="Prismatic light"
     className="absolute inset-0 w-full h-full object-cover"
   />
-
-  {/* Zone basse : verre + couleur, TOUJOURS montée (ne clignote pas) */}
   <div
     className="absolute p-4 md:p-8"
     style={{ bottom: 0, left: "20%", right: 0, top: "auto" }}
   >
-    {/* Verre : flou + profondeur, fixe, disparaît seulement au survol */}
-    <div
-      className="absolute inset-0 backdrop-blur-xs transform-gpu shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-500 group-hover:backdrop-blur-none group-hover:shadow-none pointer-events-none"
-    />
-    {/* Couleur : fixe aussi */}
+    <div className="absolute inset-0 backdrop-blur-[1.5px] transform-gpu shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-500 group-hover:backdrop-blur-none group-hover:shadow-none pointer-events-none" />
     <div
       className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
       style={{ backgroundColor: carteActive.bg }}
     />
-
-    {/* Contenu : LUI seul fait le fondu au changement de carte */}
-<div key={carteActive.titre} className="relative carte-entree">
-        <p className="font-[family-name:var(--font-serif)] italic text-white text-sm md:text-base mb-4 tracking-wide">
-        {carteActive.intro}
-      </p>
+    <div key={carteActive.titre} className="relative carte-entree">
+      <p className="font-[family-name:var(--font-serif)] italic text-white text-sm md:text-base mb-4 tracking-wide">{carteActive.intro}</p>
       <p className="font-[family-name:var(--font-serif)] text-white text-3xl md:text-5xl leading-none mb-3">
         {carteActive.titre}
-        <span className="font-[family-name:var(--font-sans)] text-xs md:text-sm align-baseline ml-2">
-          {carteActive.suffixe}
-        </span>
+        <span className="font-[family-name:var(--font-sans)] text-xs md:text-sm align-baseline ml-2">{carteActive.suffixe}</span>
       </p>
-      <p className="text-white text-sm leading-relaxed mb-2">
-        {carteActive.texte}
-      </p>
-      <a href={carteActive.lien} className="block text-white text-sm font-medium mt-4 text-right">Voir plus →</a>
-    </div>
+      <p className="text-white text-sm leading-relaxed mb-2">{carteActive.texte}</p>
+{carteActive.lien !== "#" && (
+        <a href={carteActive.lien} className="block text-white text-sm font-medium mt-4 text-right">Voir plus →</a>
+      )}
+          </div>
   </div>
 </div>
+
+{/* SCROLL HORIZONTAL mobile — visible seulement si catégorie active */}
+{motActif && (
+  <div className="md:hidden flex flex-row overflow-x-auto snap-x snap-mandatory gap-3 px-1 h-[50vh] pt-4">
+    {CARTES[motActif]?.map((carte, i) => (
+      <a
+        key={i}
+        href={carte.lien}
+className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hidden"
+      >
+        <img src={carte.image} alt={carte.titre} className="absolute inset-0 w-full h-full object-cover" />
+<div className="absolute p-4" style={{ bottom: 0, left: "20%", right: 0, top: "auto" }}>
+  <div className="absolute inset-0 backdrop-blur-[1.5px] transform-gpu shadow-[0_8px_32px_rgba(0,0,0,0.1)] pointer-events-none" />
+  <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundColor: carte.bg }} />
+<div className="relative">
+            <p className="font-[family-name:var(--font-serif)] italic text-white text-xs mb-1 tracking-wide">{carte.intro}</p>          <p className="font-[family-name:var(--font-serif)] text-white text-2xl leading-none mb-1">
+            {carte.titre}
+            <span className="font-[family-name:var(--font-sans)] text-xs align-baseline ml-2">{carte.suffixe}</span>
+          </p>
+<p className="text-white text-xs leading-relaxed">{carte.texte}</p>
+        </div>
+        </div>
+      </a>
+    ))}
+  </div>
+)}
+
+
+
 
         {/* STRATÉGIE mobile — visible seulement sous l'image */}
         <div className="md:hidden flex flex-row items-center gap-4 text-[#1e1e1e] py-6">
@@ -368,7 +382,7 @@ const carteSuivante = () => {
       </p>
       <p className="font-[family-name:var(--font-sans)] font-semibold text-md sm:text-[14px] mt-8 tracking-tight">
         Oui, c’est un hack pas pire pour avoir des résultats, 
-        ans le coût d’une agence ni le poids d’une embauche. 
+        sans le coût d’une agence ni le poids d’une embauche. 
       </p>
     </div>
   </div>
