@@ -411,12 +411,12 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
       },
       {
         titre: "Images de marques",
-        texte: "Le 0 to 1, c'est passer d'une idée à une histoire. Mettre les rêves du monde au monde, ça mallure.",
+        texte: "Le 0 to 1, c'est passer d'une idée à une histoire. Mettre les rêves du monde au monde, ça mallume.",
         icon: "/icons/palette.webp"
       },
       {
         titre: "Web et performance",
-        texte: "Vitrine, landing page, eComm, applicatif et SEO. Tout ce que ça prend pour que le web soit un vecteur de croissance, par une source de maux de tête.",
+        texte: "Vitrine, landing page, eComm, applicatif et SEO. Tout ce que ça prend pour que le web soit un vecteur de croissance, pas une source de maux de tête.",
         icon: "/icons/mouse.webp"
       },
       {
