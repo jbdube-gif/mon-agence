@@ -40,7 +40,7 @@ const CARTES: Record<string, {
   STRATÉGIE: [
     {
     intro: "SAASPASSE",
-    titre: "épisode balado",
+    titre: "Épisode balado",
     suffixe: "podcast",
     texte: "Épisode dédié à clarifier la différence entre l'approche d'acquisition traditionnelle et celle d'une équipe multi-disciplinaire tech.",
     image: "/cas/saaspasse.png",
@@ -49,8 +49,8 @@ const CARTES: Record<string, {
   },
       {
     intro: "PIGEONS",
-    titre: "application web",
-    suffixe: "accompagement stratégique",
+    titre: "Application web",
+    suffixe: "Accompagement stratégique",
     texte: "Permettre aux travailleurs.euses autonomes et aux entreprises de se rencontrer.",
     image: "/cas/pigeons.png",
     bg: "#F57A59",
@@ -61,7 +61,7 @@ const CARTES: Record<string, {
   CRÉATION: [
     {
     intro: "CLINIQUE PELVIA",
-    titre: "engin de contenu",
+    titre: "Engin de contenu",
     suffixe: "Engin I.A.",
     texte: "Une direction artistique qui rend la santé pelvienne plus réconfortante.",
     image: "/cas/pelvia.png",
@@ -76,10 +76,10 @@ const CARTES: Record<string, {
     bg: "#D543AA",
     lien: "https://open.spotify.com/intl-fr/album/1bitpcHppdiliuMzI9YO6R?si=DjLdheeVQGyPuujVCXkFlA",
   },    {
-    intro: "LMH",
+    intro: "L.M.H. - Vidéo",
     titre: "On est braves",
-    suffixe: "production vidéo",
-    texte: "Création d'une vidéo pour enrôler plus de braves à la ligue matinale.",
+    suffixe: "production",
+    texte: "Création d'une vidéo pour enrôler plus de braves à la ligue matinale de hockey.",
     image: "/cas/lmh.png",
     bg: "#4159D2",
     lien: "https://www.linkedin.com/posts/la-lmh_mon-bon-ami-jean-benoit-dub%C3%A9-a-%C3%A9t%C3%A9-bien-inspir%C3%A9-activity-7417742447088324609-ve5F?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAABOZeecB4PFDwrA5g7lRbZAwxhJTJvZW1DE",
@@ -88,8 +88,8 @@ const CARTES: Record<string, {
   FORMATION: [
     {
     intro: "FORMATIONS INFOPRESSE",
-    titre: "i.a. et marketing ",
-    suffixe: "formation",
+    titre: "I.A. et Marketing ",
+    suffixe: "Formation",
     texte: "Prochaines formations offertes : Assistants IA: créez vos assistants personnalisés et automatisez vos tâches répétitives.",
     image: "/cas/infopresse.png",
     bg: "#D543AA",
@@ -97,8 +97,8 @@ const CARTES: Record<string, {
   },   
    {
     intro: "WEB À QUÉBEC",
-    titre: "les cycles de croissance",
-    suffixe: "conférence",
+    titre: "Les cycles de croissance",
+    suffixe: "Conférence",
     texte: "Cycles de croissance, acquisition, océan de données, paralyse de l'analyse, bref, une conférence visant à structurer la croissance.",
     image: "/cas/waq.png",
     bg: "#4159D2",
@@ -598,7 +598,7 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
 </section>
 
 {/* TÉMOIGNAGE */}
-<section className="relative overflow-hidden bg-[#000000] px-12 md:px-12 py-16 md:py-24">
+<section className="relative overflow-hidden bg-[#000000] px-12 md:px-12 py-16 md:py-8">
   {/* Image de fond */}
   <img
     src="/header.webp"
@@ -616,7 +616,7 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
 
     {/* Citation + attribution */}
     <div className="text-white md:pt-34 font-regular text-md ">
-      <p className="text-md md:text-[14px] leading-relaxed tracking-tight">
+      <p className="text-md md:text-[22px] leading-relaxed tracking-tight">
         J’adore travailler avec Volteface. Ils prennent le temps d’écouter, 
         puis de comprendre. Puis après, ils ne perdent pas de temps.
       </p>

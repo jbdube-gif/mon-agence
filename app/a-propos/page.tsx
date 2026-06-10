@@ -29,7 +29,7 @@ const PARCOURS = [
    {
     annee: "2017",
     titre: "Mirego : Stratégie numérique",
-    texte: "UX, feuilles de route numériques, SEO, SEM, publicité programmatique, analytics, recherche utilisateur, organisation et facilitation d'ateliers.",
+    texte: "UX, feuilles de route numériques, SEO, SEM, publicité programmatique, cybermétrie, recherche utilisateur, organisation et facilitation d'ateliers.",
   },
     {
     annee: "2020",
@@ -82,15 +82,15 @@ const REALISATIONS = [
     couleur: "#f57a59",
   },
   {
-    chiffre: "50",
+    chiffre: "50+",
     label: "Produits numériques",
     detail: "Apps et sites web : Santé, tech, éducation, culture, tourisme, alimentation et plus.",
     couleur: "#D543AA",
   },
   {
     chiffre: "∞",
-    label: "Curiosité",
-    detail: "L'ingrédient secret de tout ce qu'on fait.",
+    label: "Passion",
+    detail: "L'ingrédient secret de tout ce que je fais.",
     couleur: "#4159d2",
   },
 ];
@@ -206,10 +206,10 @@ export default function APropos() {
           <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-sm mb-4 tracking-wide">HELLO !</p>
 <h1 className="font-[family-name:var(--font-serif)] text-5xl md:text-7xl text-[#1e1e1e] leading-tight mb-6">
   À propos de nous
-  <span className="block italic text-[#95A1E6] text-lg md:text-lg leading-none mt-1">... ben, à propos de moi, en faits.</span>
+  <span className="block italic text-[#95A1E6] text-lg md:text-lg leading-none mt-1">... ben, à propos de moi, en fait.</span>
 </h1>
           <p className="text-[#1e1e1e] text-xs md:text-sm leading-relaxed opacity-70 max-w-md mb-8">
-            Salut, je m'appelle Jean Benoit, mais tout le monde m'appelle JB (enchanté!). Puis Volteface, bien c'est ma micro-agence de une personne.<br />
+            Salut, je m'appelle Jean Benoit, mais tout le monde m'appelle JB (enchanté!). Puis Volteface, bien c'est ma micro-agence d'une personne.<br />
             <br />
 
             Avec plus d’une décennie d’expérience à l’intersection du marketing, du numérique et de l’intelligence artificielle, j'ai accompagné des marques nationales comme SAQ, Familiprix, Beneva, la Ruche et Télé-Québec dans l’optimisation de leurs produits et stratégies numériques. Mon parcours atypique, du marketing traditionnel vers le numérique, puis vers l’IA, me permet de comprendre autant les enjeux d’affaires que les réalités opérationnelles. <br />
@@ -217,7 +217,7 @@ export default function APropos() {
              Mon approche pédagogique est ancrée dans le concret, pas de théorie pour la théorie. 
              <br />
              <br />
-Membre fondateur de la Brigade IA, formateur chez Formations Infopresse, bénévole Interface, chargé de cours à l’Université Laval, je suis activement engagé dans l’écosystème numériquo-marketing québécois.
+Membre fondateur de la Brigade IA, formateur chez Formations Infopresse, bénévole Interface, chargé de cours à l’Université Laval, je suis activement engagé dans l’écosystème numérico-marketing québécois.
           </p>
           {/* Liens sociaux */}
           <div className="flex gap-6 items-center">
@@ -331,7 +331,7 @@ Membre fondateur de la Brigade IA, formateur chez Formations Infopresse, bénév
       {/* CTA */}
       <section className="relative overflow-hidden bg-[#000000] px-5 md:px-12 py-24">
         <img
-          src="/light-black.png"
+          src="/header.webp"
           alt=""
           aria-hidden
           className="pointer-events-none absolute inset-0 w-full h-full object-cover opacity-90"
@@ -345,7 +345,7 @@ Membre fondateur de la Brigade IA, formateur chez Formations Infopresse, bénév
             href="mailto:jbdube@volteface.ca"
             className="font-[family-name:var(--font-serif)] text-xl text-white hover:opacity-70 transition-opacity"
           >
-            Écrivez-nous →
+            Écrivez-moi →
           </a>
         </div>
       </section>
