@@ -228,6 +228,7 @@ const carteSuivante = () => {
   <div className="hidden md:flex flex-row items-center gap-8 text-sm font-semibold text-[#1e1e1e]">
     <a href="#expertise" className="hover:opacity-60 transition-opacity">expertise</a>
     <a href="#approche" className="hover:opacity-60 transition-opacity">approche</a>
+    <a href="/a-propos" className="hover:opacity-60 transition-opacity">à propos</a>
     <a href="#contact" className="hover:opacity-60 transition-opacity">contact</a>
   </div>
 
@@ -247,6 +248,7 @@ const carteSuivante = () => {
     <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 flex flex-col px-5 py-4 gap-4 text-sm font-semibold text-[#1e1e1e]">
       <a href="#expertise" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Expertise</a>
       <a href="#approche" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Approche</a>
+      <a href="/a-propos" className="hover:opacity-60 transition-opacity">À propos</a>
       <a href="#contact" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Contact</a>
     </div>
   )}

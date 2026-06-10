@@ -18,10 +18,10 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata = {
   title: "Volteface — Services marketing fractionnels",
-  description: "De la stratégie à l'exécution direct.",
+  description: "De la stratégie à l'exécution. Direct.",
   openGraph: {
     title: "Volteface — Services marketing fractionnels",
-    description: "De la stratégie à l'exécution direct.",
+    description: "De la stratégie à l'exécution. Direct.",
     url: "https://www.volteface.ca",
     siteName: "Volteface",
     images: [
@@ -38,7 +38,7 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Volteface — Services marketing fractionnels",
-    description: "De la stratégie à l'exécution direct.",
+    description: "De la stratégie à l'exécution. Direct.",
     images: ["https://www.volteface.ca/og.jpg"],
   },
 };
