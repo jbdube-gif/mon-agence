@@ -276,7 +276,7 @@ Membre fondateur de la Brigade IA, formateur chez Formations Infopresse, bénév
       {/* PARCOURS — ligne du temps */}
       <section className="px-5 md:px-12 py-16 bg-gray-50">
         <h2 className="font-[family-name:var(--font-serif)] text-3xl text-[#1e1e1e] mb-16 text-center">
-          Le parcours.
+          Moments importants.
         </h2>
 
         <div className="relative max-w-3xl mx-auto">
