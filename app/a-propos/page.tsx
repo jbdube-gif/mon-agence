@@ -209,7 +209,7 @@ export default function APropos() {
   <span className="block italic text-[#95A1E6] text-lg md:text-lg leading-none mt-1">... ben, à propos de moi, en faits.</span>
 </h1>
           <p className="text-[#1e1e1e] text-xs md:text-sm leading-relaxed opacity-70 max-w-md mb-8">
-            Salut, je m'appelle Jean Benoit, mais tout le monde m'appelle JB (enchanté!). Volteface, c'est une ma micro-agence.<br />
+            Salut, je m'appelle Jean Benoit, mais tout le monde m'appelle JB (enchanté!). Puis Volteface, bien c'est ma micro-agence de une personne.<br />
             <br />
 
             Avec plus d’une décennie d’expérience à l’intersection du marketing, du numérique et de l’intelligence artificielle, j'ai accompagné des marques nationales comme SAQ, Familiprix, Beneva, la Ruche et Télé-Québec dans l’optimisation de leurs produits et stratégies numériques. Mon parcours atypique, du marketing traditionnel vers le numérique, puis vers l’IA, me permet de comprendre autant les enjeux d’affaires que les réalités opérationnelles. <br />
