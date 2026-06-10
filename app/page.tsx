@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 // Plages de rotation uniques par index [startDeg, endDeg]
@@ -125,16 +125,106 @@ const COULEUR_CERCLE: Record<string, string> = {
   "FORMATION": "#D543AA",
 };
 
+function MotCercle({ mot, grand, motActif, onClick }: { mot: string; grand?: boolean; motActif: string | null; onClick: (mot: string) => void }) {
+  const actif = motActif === mot;
+  const couleur = COULEUR_CERCLE[mot] ?? "#1e1e1e";
+  return (
+    <button
+      onClick={() => onClick(mot)}
+      className="group relative inline-block py-1 cursor-pointer shrink-0"
+      style={{ paddingLeft: "clamp(0.1rem, 0.8vw, 1rem)", paddingRight: "clamp(0.1rem, 0.8vw, 1rem)" }}
+    >
+      <span
+        className="font-[family-name:var(--font-serif)] italic relative z-10 whitespace-nowrap"
+        style={{ fontSize: grand ? "1.5rem" : "clamp(0.875rem, 1.5vw, 1.25rem)" }}
+      >
+        {mot}
+      </span>
+      <svg
+        className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${
+          actif ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+        }`}
+        viewBox="0 0 100 50"
+        preserveAspectRatio="none"
+      >
+        <ellipse
+          cx="50" cy="25" rx="48" ry="22"
+          fill="none"
+          stroke={couleur}
+          strokeWidth="1"
+          className={`cercle-trace ${actif ? "cercle-actif" : ""}`}
+        />
+      </svg>
+    </button>
+  );
+}
+
 export default function Home() {
 const [scrollY, setScrollY] = useState(0);
 const [menuOuvert, setMenuOuvert] = useState(false);
 const [carteActive, setCarteActive] = useState(CARTE_DEFAUT);
-const [indexCarte, setIndexCarte] = useState(0); // index dans la catégorie active;
+const [indexCarte, setIndexCarte] = useState(0);
 const [visible, setVisible] = useState(true);
 const [motActif, setMotActif] = useState<string | null>(null);
 
+const videoRef = useRef<HTMLVideoElement>(null);
+const VIDEO_END = 7.5; // 00:07:15 @ 30fps
+
+// Force play when video mounts (muted autoplay is allowed but needs a nudge in some browsers)
+useEffect(() => {
+  if (carteActive.lien === "#" && videoRef.current) {
+    videoRef.current.currentTime = 0;
+    videoRef.current.play().catch(() => {});
+  }
+}, [carteActive]);
+
+// Auto-cycle states
+const [autoActive, setAutoActive] = useState(true);
+const [autoPhase, setAutoPhase] = useState<'default' | 'project'>('default');
+const [autoProgress, setAutoProgress] = useState(0);
+const [cardHovered, setCardHovered] = useState(false);
+const autoPhaseRef = useRef(autoPhase);
+autoPhaseRef.current = autoPhase;
+const autoRafRef = useRef<number | null>(null);
+
+// Auto-cycle timer
+useEffect(() => {
+  if (!autoActive || motActif !== null || cardHovered) {
+    setAutoProgress(0);
+    if (autoRafRef.current) cancelAnimationFrame(autoRafRef.current);
+    return;
+  }
+  const startTime = Date.now();
+  const duration = 6000;
+  const tick = () => {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    setAutoProgress(progress * 100);
+    if (progress >= 1) {
+      if (autoPhaseRef.current === 'default') {
+        const categories = Object.keys(CARTES);
+        const cat = categories[Math.floor(Math.random() * categories.length)];
+        const cards = CARTES[cat];
+        const card = cards[Math.floor(Math.random() * cards.length)];
+        setAutoPhase('project');
+        setVisible(false);
+        setTimeout(() => { setCarteActive(card); setVisible(true); }, 200);
+      } else {
+        setAutoPhase('default');
+        setVisible(false);
+        setTimeout(() => { setCarteActive(CARTE_DEFAUT); setVisible(true); }, 200);
+      }
+      return;
+    }
+    autoRafRef.current = requestAnimationFrame(tick);
+  };
+  autoRafRef.current = requestAnimationFrame(tick);
+  return () => { if (autoRafRef.current) cancelAnimationFrame(autoRafRef.current); };
+}, [autoActive, motActif, cardHovered, autoPhase]);
+
 // Clic sur un mot : bascule la carte + le cercle
 const choisirCarte = (categorie: string) => {
+  setAutoActive(false);
   if (motActif === categorie) {
     setMotActif(null);
     setVisible(false);
@@ -160,11 +250,28 @@ const choisirCarte = (categorie: string) => {
 
 // "Autre projet" : passe à la carte suivante du service en cours
 const carteSuivante = () => {
+  setAutoActive(false);
   if (!motActif) return;
   const cartes = CARTES[motActif];
   if (!cartes || cartes.length <= 1) return;
-  const idx = (indexCarte + 1) % cartes.length; // boucle au début après la dernière
+  const idx = (indexCarte + 1) % cartes.length;
 
+  setIndexCarte(idx);
+  setVisible(false);
+  setTimeout(() => {
+    setCarteActive(cartes[idx]);
+    setVisible(true);
+  }, 200);
+};
+
+// Flèche défaut : choisit une catégorie et un projet au hasard
+const choisirProjetAleatoire = () => {
+  setAutoActive(false);
+  const categories = Object.keys(CARTES);
+  const categorie = categories[Math.floor(Math.random() * categories.length)];
+  const cartes = CARTES[categorie];
+  const idx = Math.floor(Math.random() * cartes.length);
+  setMotActif(categorie);
   setIndexCarte(idx);
   setVisible(false);
   setTimeout(() => {
@@ -181,40 +288,6 @@ const carteSuivante = () => {
 
   // progress : 0 au top, 1 quand on a scrollé 800px
   const progress = Math.min(scrollY / 800, 1);
-  const MotCercle = ({ mot, grand }: { mot: string; grand?: boolean }) => {
-    const actif = motActif === mot;
-    const couleur = COULEUR_CERCLE[mot] ?? "#1e1e1e";
-    return (
-<button
-  onClick={() => choisirCarte(mot)}
-  className="group relative inline-block py-1 cursor-pointer shrink-0"
-  style={{ paddingLeft: "clamp(0.1rem, 0.8vw, 1rem)", paddingRight: "clamp(0.1rem, 0.8vw, 1rem)" }}
->
-        <span
-          className="font-[family-name:var(--font-serif)] italic relative z-10 whitespace-nowrap"
-          style={{ fontSize: grand ? "1.5rem" : "clamp(0.875rem, 1.5vw, 1.25rem)" }}
-        >
-          {mot}
-        </span>
-        <svg
-          className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${
-            actif ? "opacity-100" : "opacity-0 group-hover:opacity-100"
-          }`}
-          viewBox="0 0 100 50"
-          preserveAspectRatio="none"
-        >
-<ellipse
-  cx="50" cy="25" rx="48" ry="22"
-  fill="none"
-  stroke={couleur}
-  strokeWidth="1"
-  className={`cercle-trace ${actif ? "cercle-actif" : ""}`}
-/>
-      </svg>
-      
-      </button>
-    );
-  };
   return (
 <main id="top" className="bg-white min-h-screen font-[family-name:var(--font-sans)]">
 
@@ -280,17 +353,6 @@ const carteSuivante = () => {
   </span>
 </p>
 
-    {/* Espace réservé en permanence pour ne rien décaler */}
-<div className="h-6 mt-2 hidden md:block">
-      {motActif && CARTES[motActif] && CARTES[motActif].length > 1 && (
-        <button
-          onClick={carteSuivante}
-          className="text-black text-sm font-medium cursor-pointer hover:opacity-60 transition-opacity"
-        >
-          autre projet →
-        </button>
-      )}
-    </div>
   </div>
 
   {/* Rangée de mots */}
@@ -298,22 +360,42 @@ const carteSuivante = () => {
     className="hidden md:flex flex-row items-center min-w-0 overflow-hidden text-[#1e1e1e]"
     style={{ gap: "clamp(0.125rem, 1vw, 3.5rem)" }}
   >
-    <MotCercle mot="STRATÉGIE" />
+    <MotCercle mot="STRATÉGIE" motActif={motActif} onClick={choisirCarte} />
     <span className="shrink-0 h-px bg-black" style={{ width: "clamp(0.5rem, 2vw, 5rem)" }} />
-    <MotCercle mot="CRÉATION" />
+    <MotCercle mot="CRÉATION" motActif={motActif} onClick={choisirCarte} />
     <span className="shrink-0 h-px bg-black" style={{ width: "clamp(0.5rem, 2vw, 5rem)" }} />
-    <MotCercle mot="FORMATION" />
+    <MotCercle mot="FORMATION" motActif={motActif} onClick={choisirCarte} />
   </div>
 </div>
 
 
 {/* IMAGE HERO — desktop toujours, mobile seulement si pas de catégorie active */}
-<div className={`group relative overflow-hidden h-[50vh] md:h-full ${motActif ? "hidden md:block" : "block"}`}>
-  <img
-    src={carteActive.image}
-    alt="Prismatic light"
-    className="absolute inset-0 w-full h-full object-cover"
-  />
+<div
+  className={`group relative overflow-hidden h-[50vh] md:h-full ${motActif ? "hidden md:block" : "block"}`}
+  onMouseEnter={() => setCardHovered(true)}
+  onMouseLeave={() => setCardHovered(false)}
+>
+  {carteActive.lien === "#" ? (
+    <video
+      ref={videoRef}
+      className="absolute inset-0 w-full h-full object-cover"
+      autoPlay
+      muted
+      playsInline
+      onTimeUpdate={() => {
+        const v = videoRef.current;
+        if (v && v.currentTime >= VIDEO_END) { v.currentTime = 0; v.play(); }
+      }}
+    >
+      <source src="/hero.mp4" type="video/mp4" />
+    </video>
+  ) : (
+    <img
+      src={carteActive.image}
+      alt=""
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+  )}
   <div
     className="absolute p-4 md:p-8"
     style={{ bottom: 0, left: "20%", right: 0, top: "auto" }}
@@ -330,11 +412,34 @@ const carteSuivante = () => {
         <span className="font-[family-name:var(--font-sans)] text-xs md:text-sm align-baseline ml-2">{carteActive.suffixe}</span>
       </p>
       <p className="text-white text-sm leading-relaxed mb-2">{carteActive.texte}</p>
-{carteActive.lien !== "#" && (
-        <a href={carteActive.lien} className="block text-white text-sm font-medium mt-4 text-right">Voir plus →</a>
-      )}
+<div className="flex justify-end items-center gap-4 mt-4">
+        {carteActive.lien !== "#" && (
+          <a href={carteActive.lien} className="text-white text-sm font-medium hover:opacity-60 transition-opacity">Voir plus ↗</a>
+        )}
+        {motActif && CARTES[motActif] && CARTES[motActif].length > 1 ? (
+          <button
+            onClick={carteSuivante}
+            className="text-white text-sm font-medium cursor-pointer hover:opacity-60 transition-opacity"
+          >
+            autre projet →
+          </button>
+        ) : carteActive.lien === "#" ? (
+          <button
+            onClick={choisirProjetAleatoire}
+            className="text-white text-sm font-medium cursor-pointer hover:opacity-60 transition-opacity"
+          >
+            →
+          </button>
+        ) : null}
+      </div>
           </div>
   </div>
+  {/* Barre de progression auto-cycle */}
+  {autoActive && motActif === null && !cardHovered && (
+    <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/20">
+      <div className="h-full bg-white/60" style={{ width: `${autoProgress}%`, transition: 'width 0.1s linear' }} />
+    </div>
+  )}
 </div>
 
 {/* SCROLL HORIZONTAL mobile — visible seulement si catégorie active */}
@@ -368,11 +473,11 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
 
         {/* STRATÉGIE mobile — visible seulement sous l'image */}
         <div className="md:hidden flex flex-row items-center gap-4 text-[#1e1e1e] py-6">
-  <MotCercle mot="STRATÉGIE" grand />
+  <MotCercle mot="STRATÉGIE" grand motActif={motActif} onClick={choisirCarte} />
   <span className="w-8 h-px bg-black inline-block"></span>
-  <MotCercle mot="CRÉATION" grand />
+  <MotCercle mot="CRÉATION" grand motActif={motActif} onClick={choisirCarte} />
   <span className="w-8 h-px bg-black inline-block"></span>
-  <MotCercle mot="FORMATION" grand />
+  <MotCercle mot="FORMATION" grand motActif={motActif} onClick={choisirCarte} />
 </div>
       </section>
 
