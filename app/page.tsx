@@ -39,13 +39,13 @@ const CARTES: Record<string, {
 }[]> = {
   STRATÉGIE: [
     {
-    intro: "TROUVE TA RESSOURCE",
-    titre: "Beluga",
-    suffixe: "app",
-    texte: "Accompagnement I.A. et stratégie de rétention pour aider les ados à se sentir bien.",
-    image: "/cas/beluga.png",
+    intro: "SAASPASSE",
+    titre: "épisode balado",
+    suffixe: "podcast",
+    texte: "Épisode dédié à clarifier l'approche d'acquisition traditionnelle d'une équipe multi-disciplinaire.",
+    image: "/cas/saaspasse.png",
     bg: "#8b95e8",
-    lien: "https://trouvetaressource.com/en/beluga",
+    lien: "https://saaspasse.com/episode/episode-38-jean-benoit-dube-la-growth-wtf/",
   },
       {
     intro: "PIGEONS",
@@ -88,21 +88,21 @@ const CARTES: Record<string, {
   FORMATION: [
     {
     intro: "FORMATIONS INFOPRESSE",
-    titre: "I.A. et marketing ",
+    titre: "i.a. et marketing ",
     suffixe: "formation",
     texte: "Prochaines formations offertes : Assistants IA: créez vos assistants personnalisés et automatisez vos tâches répétitives.",
     image: "/cas/infopresse.png",
-    bg: "#4159D2",
+    bg: "#D543AA",
     lien: "https://www.infopresse.com/formation/assistants-ia-creez-vos-assistants-personnalises-et-automatisez-vos-taches-repetitives/",
   },   
    {
-    intro: "PREMIER TECH",
-    titre: "Atelier d'accélération numérique",
-    suffixe: "atelier",
-    texte: "200 leaders, 4 heures, 1 objetif : maîtriser l'I.A. pour augmenter l'impact.",
-    image: "/cas/premiertech.png",
-    bg: "#8b95e8",
-    lien: "https://www.google.com/search?sca_esv=17317455c5eb4af0&rlz=1C5CHFA_enCA741CA741&sxsrf=ANbL-n6dSDF2ITHcbY_L3J2_Sy9Cgy7_iQ:1780953669091&udm=7&fbs=ADc_l-bpk8W4E-qsVlOvbGJcDwpnlSr7xQUI8WetOB3ophaMjXwzVj6gWfL0AaSz4mZLK3msMFR2tce-tm0jGmR81nT5vhrCPvuSjp1UcG7tjEK6mShoqxHtwzksJ72KCKcqbt0y2xS8SDxLYKRq1DCrN9oCWSvsAH-YZExIewoPiU8gKXcOkHcXP_VGCWOgjDXVEPAfB0LZ_MZC_1VFdti5yJqai-6eAGU8K_iS-cZEH_M5l0OF3o0&q=premier+tech+tm&sa=X&ved=2ahUKEwji1rq2yfiUAxWHLFkFHWQuAyQQtKgLegQIDxAB&biw=1248&bih=797&dpr=1#fpstate=ive&vld=cid:a560a403,vid:S5yJYzvAWN0,st:0",
+    intro: "WEB À QUÉBEC",
+    titre: "les cycles de croissance",
+    suffixe: "conférence",
+    texte: "Cycles de croissance, acquisition, ocréan de données unités, paralyse de l'analyse, bref, une conférence visant à structurer la croissance.",
+    image: "/cas/waq.jpeg",
+    bg: "#4159D2",
+    lien: "https://interfaceqc.com/",
   },
   ],
 };

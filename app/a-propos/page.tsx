@@ -17,34 +17,54 @@ const instrumentSerif = Instrument_Serif({
 
 const PARCOURS = [
   {
-    annee: "2008",
+    annee: "2014",
     titre: "Université Laval",
     texte: "Baccalauréat en communication publique, spécialisation marketing.",
   },
   {
-    annee: "2010",
-    titre: "Premiers mandats",
+    annee: "2016",
+    titre: "Brad : Premiers mandats",
     texte: "Début de carrière en agences de pub québécoises. Premières campagnes, premières victoires.",
   },
-  {
-    annee: "2015",
-    titre: "Direction marketing",
-    texte: "Prise en charge de directions marketing pour des PME et scale-ups en croissance.",
+   {
+    annee: "2017",
+    titre: "Mirego : Stratégie numérique",
+    texte: "UX, feuilles de route numériques, SEO, SEM, publicité programmatique, analytics, recherche utilisateur, organisation et facilitation d'ateliers.",
+  },
+    {
+    annee: "2020",
+    titre: "Mirego : Direction stratégie numérique",
+    texte: "Développer des talents, créer des offres de services et développer les stratégies numériques des clients. Mon rôle est de développer l'expertise stratégique et d'assurer la qualité du produit créatif de Mirego.",
+  },
+      {
+    annee: "2023",
+  titre: "Premières conférences et formations",
+    texte: "Pivot vers le rôle de conférencier-formateur : Sommet I.A. en marketing (Formations Infopresse), Web à Québec, Interface, Salon Connexion, TM26, TM28 et PTSummit par Premier Tech, HOP! Le Sommet, Mirego Sessions et DX3 (Toronto).",
+  },
+    {
+    annee: "2024",
+  titre: "Université Laval : Chargé de cours",
+    texte: "Chargé des cours Mandat Publicitaire I et II, une série de cours ateliers conçus pour permettre aux étudiants de réaliser de véritables campagnes de communication.",
   },
   {
-    annee: "2019",
-    titre: "Virage numérique et IA",
-    texte: "Exploration approfondie de l'intelligence artificielle appliquée au marketing. Formations, expérimentations, résultats.",
+    annee: "2025",
+  titre: "Mirego : Direction stratégie et création I.A.",
+    texte: "Je définis l'orientation stratégique de nos produits numériques et façonne comment l'IA devient un levier créatif dans nos expériences.",
+  },
+    {
+    annee: "2025",
+  titre: "Brigade I.A. : Membre de la cohorte fondatrice",
+    texte: "Implication dans la Brigade I.A.",
   },
   {
-    annee: "2022",
-    titre: "Volteface",
+    annee: "2026",
+    titre: "Bilco Marketing : Consultant stratégique",
+    texte: "Renfort stratégique et technologique à l'agence marketing Bilco.",
+  },
+  {
+    annee: "2026",
+    titre: "Création de Volteface",
     texte: "Fondation de Volteface pour offrir des services marketing fractionnels de haut niveau aux organisations qui veulent aller loin.",
-  },
-  {
-    annee: "2024–",
-    titre: "Formateur et conférencier",
-    texte: "Formations pour Infopresse, ateliers pour grandes entreprises, conférences sur l'IA et le marketing.",
   },
 ];
 
@@ -62,9 +82,9 @@ const REALISATIONS = [
     couleur: "#f57a59",
   },
   {
-    chiffre: "8",
-    label: "Secteurs d'activité",
-    detail: "Santé, tech, éducation, culture, tourisme, alimentation et plus.",
+    chiffre: "50",
+    label: "Produits numériques",
+    detail: "Apps et sites web : Santé, tech, éducation, culture, tourisme, alimentation et plus.",
     couleur: "#D543AA",
   },
   {
@@ -152,7 +172,7 @@ export default function APropos() {
       {/* NAV */}
       <nav className="flex justify-between items-center px-5 md:px-12 pt-5 pb-4 sticky top-0 bg-white z-50 border-b border-gray-100">
         <a href="/" className="cursor-pointer">
-          <img src="/logo.webp" alt="Volte Face" className="h-15 w-auto" />
+          <img src="/logo.webp" alt="Volteface" className="h-15 w-auto" />
         </a>
         <div className="hidden md:flex flex-row items-center gap-8 text-sm font-semibold text-[#1e1e1e]">
           <a href="/#expertise" className="hover:opacity-60 transition-opacity">expertise</a>
@@ -183,15 +203,21 @@ export default function APropos() {
       <section className="px-5 md:px-12 py-16 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Texte */}
         <div>
-          <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-sm mb-4 tracking-wide">FONDATEUR</p>
-          <h1 className="font-[family-name:var(--font-serif)] text-5xl md:text-7xl text-[#1e1e1e] leading-tight mb-6">
-            Jean<br />
-            <span className="italic">Benoît</span><br />
-            Dubé.
-          </h1>
-          <p className="text-[#1e1e1e] text-sm md:text-base leading-relaxed opacity-70 max-w-md mb-8">
-            Stratège marketing, formateur en IA, créateur de marques et directeur marketing fractionnel.
-            Une approche directe, des résultats concrets, beaucoup de plaisir en chemin.
+          <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-sm mb-4 tracking-wide">HELLO !</p>
+<h1 className="font-[family-name:var(--font-serif)] text-5xl md:text-7xl text-[#1e1e1e] leading-tight mb-6">
+  À propos de nous
+  <span className="block italic text-[#95A1E6] text-2xl md:text-2xl leading-none mt-1">(moi, en faits).</span>
+</h1>
+          <p className="text-[#1e1e1e] text-xs md:text-sm leading-relaxed opacity-70 max-w-md mb-8">
+            Salut, je m'appelle Jean Benoit, mais tout le monde m'appelle JB (enchanté!). Volteface, c'est une ma micro-agence.<br />
+            <br />
+
+            Avec plus d’une décennie d’expérience à l’intersection du marketing, du numérique et de l’intelligence artificielle, j'ai accompagné des marques nationales comme SAQ, Familiprix, Beneva, la Ruche et Télé-Québec dans l’optimisation de leurs produits et stratégies numériques. Mon parcours atypique, du marketing traditionnel vers le numérique, puis vers l’IA, me permet de comprendre autant les enjeux d’affaires que les réalités opérationnelles. <br />
+             <br />
+             Mon approche pédagogique est ancrée dans le concret, pas de théorie pour la théorie. 
+             <br />
+             <br />
+Membre fondateur de la Brigade IA, formateur chez Formations Infopresse, bénévole Interface, chargé de cours à l’Université Laval, je suis activement engagé dans l’écosystème numériquo-marketing québécois.
           </p>
           {/* Liens sociaux */}
           <div className="flex gap-6 items-center">
@@ -218,24 +244,34 @@ export default function APropos() {
           </div>
         </div>
 
-        {/* Photo */}
-        <div className="relative">
-          <div className="relative overflow-hidden rounded-2xl aspect-[3/4] bg-gray-100 max-w-sm mx-auto md:ml-auto md:mr-0">
-            <img
-              src="/jb.webp"
-              alt="Jean Benoît Dubé"
-              className="absolute inset-0 w-full h-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = "none";
-              }}
+{/* Photo */}
+        <div className="group relative overflow-hidden h-[60vh] md:h-full">
+          <img
+            src="/jeanbenoitdube.jpg"
+            alt="Jean Benoit Dubé"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div
+            className="absolute p-4 md:p-8"
+            style={{ bottom: 0, left: "20%", right: 0, top: "auto" }}
+          >
+            <div className="absolute inset-0 backdrop-blur-[1.5px] transform-gpu shadow-[0_8px_32px_rgba(0,0,0,0.1)] transition-all duration-500 group-hover:backdrop-blur-none group-hover:shadow-none pointer-events-none" />
+            <div
+              className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+              style={{ backgroundColor: "#4159d2" }}
             />
-            {/* Fond de secours si pas de photo */}
-            <div className="absolute inset-0 flex items-end p-6 bg-gradient-to-t from-[#4159d2]/80 to-transparent">
-              <p className="font-[family-name:var(--font-serif)] italic text-white text-2xl">JBD</p>
+            <div className="relative">
+              <p className="font-[family-name:var(--font-serif)] italic text-white text-sm md:text-base mb-4 tracking-wide">FONDATEUR</p>
+              <p className="font-[family-name:var(--font-serif)] text-white text-3xl md:text-5xl leading-none mb-3">
+                Jean Benoit Dubé
+                <span className="font-[family-name:var(--font-sans)] text-xs md:text-sm align-baseline ml-2">volteface</span>
+              </p>
+              <p className="text-white text-sm leading-relaxed mb-2">Marketing fractionnel · IA · Stratégie</p>
             </div>
           </div>
         </div>
-      </section>
+
+      </section> {/* ← ferme le HERO PRÉSENTATION */}
 
       {/* PARCOURS — ligne du temps */}
       <section className="px-5 md:px-12 py-16 bg-gray-50">
@@ -295,7 +331,7 @@ export default function APropos() {
       {/* CTA */}
       <section className="relative overflow-hidden bg-[#000000] px-5 md:px-12 py-24">
         <img
-          src="/header.webp"
+          src="/light-black.png"
           alt=""
           aria-hidden
           className="pointer-events-none absolute inset-0 w-full h-full object-cover opacity-90"
@@ -307,7 +343,7 @@ export default function APropos() {
           </h2>
           <a
             href="mailto:jbdube@volteface.ca"
-            className="font-[family-name:var(--font-serif)] underline text-xl text-white hover:opacity-70 transition-opacity"
+            className="font-[family-name:var(--font-serif)] text-xl text-white hover:opacity-70 transition-opacity"
           >
             Écrivez-nous →
           </a>
