@@ -206,7 +206,7 @@ export default function APropos() {
           <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-sm mb-4 tracking-wide">HELLO !</p>
 <h1 className="font-[family-name:var(--font-serif)] text-5xl md:text-7xl text-[#1e1e1e] leading-tight mb-6">
   À propos de nous
-  <span className="block italic text-[#95A1E6] text-2xl md:text-2xl leading-none mt-1">(moi, en faits).</span>
+  <span className="block italic text-[#95A1E6] text-lg md:text-lg leading-none mt-1">... ben, à propos de moi, en faits.</span>
 </h1>
           <p className="text-[#1e1e1e] text-xs md:text-sm leading-relaxed opacity-70 max-w-md mb-8">
             Salut, je m'appelle Jean Benoit, mais tout le monde m'appelle JB (enchanté!). Volteface, c'est une ma micro-agence.<br />
