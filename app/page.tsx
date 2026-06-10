@@ -100,7 +100,7 @@ const CARTES: Record<string, {
     titre: "les cycles de croissance",
     suffixe: "conférence",
     texte: "Cycles de croissance, acquisition, ocréan de données unités, paralyse de l'analyse, bref, une conférence visant à structurer la croissance.",
-    image: "/cas/waq.jpeg",
+    image: "/cas/waq.png",
     bg: "#4159D2",
     lien: "https://interfaceqc.com/",
   },
@@ -597,7 +597,7 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
 
       {/* FOOTER */}
       <footer className="border-t border-gray-200 px-5 md:px-12 py-8 flex justify-between items-center text-sm text-[#1e1e1e]">
-        <a href="https://www.linkedin.com/in/jean-benoit-dub%C3%A9-51b15892/" className="hover:underline">LinkedIn</a>
+        <a href="https://www.linkedin.com/company/volteface-marketing/" className="hover:underline">LinkedIn</a>
         <span>t.  418.318.6774</span>
         <span>
           <span className="font-[family-name:var(--font-serif)] ">e.</span>
