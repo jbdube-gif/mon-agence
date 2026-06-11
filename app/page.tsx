@@ -178,53 +178,8 @@ useEffect(() => {
   }
 }, [carteActive]);
 
-// Auto-cycle states
-const [autoActive, setAutoActive] = useState(true);
-const [autoPhase, setAutoPhase] = useState<'default' | 'project'>('default');
-const [autoProgress, setAutoProgress] = useState(0);
-const [cardHovered, setCardHovered] = useState(false);
-const autoPhaseRef = useRef(autoPhase);
-autoPhaseRef.current = autoPhase;
-const autoRafRef = useRef<number | null>(null);
-
-// Auto-cycle timer
-useEffect(() => {
-  if (!autoActive || motActif !== null || cardHovered) {
-    setAutoProgress(0);
-    if (autoRafRef.current) cancelAnimationFrame(autoRafRef.current);
-    return;
-  }
-  const startTime = Date.now();
-  const duration = 6000;
-  const tick = () => {
-    const elapsed = Date.now() - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    setAutoProgress(progress * 100);
-    if (progress >= 1) {
-      if (autoPhaseRef.current === 'default') {
-        const categories = Object.keys(CARTES);
-        const cat = categories[Math.floor(Math.random() * categories.length)];
-        const cards = CARTES[cat];
-        const card = cards[Math.floor(Math.random() * cards.length)];
-        setAutoPhase('project');
-        setVisible(false);
-        setTimeout(() => { setCarteActive(card); setVisible(true); }, 200);
-      } else {
-        setAutoPhase('default');
-        setVisible(false);
-        setTimeout(() => { setCarteActive(CARTE_DEFAUT); setVisible(true); }, 200);
-      }
-      return;
-    }
-    autoRafRef.current = requestAnimationFrame(tick);
-  };
-  autoRafRef.current = requestAnimationFrame(tick);
-  return () => { if (autoRafRef.current) cancelAnimationFrame(autoRafRef.current); };
-}, [autoActive, motActif, cardHovered, autoPhase]);
-
 // Clic sur un mot : bascule la carte + le cercle
 const choisirCarte = (categorie: string) => {
-  setAutoActive(false);
   if (motActif === categorie) {
     setMotActif(null);
     setVisible(false);
@@ -250,7 +205,6 @@ const choisirCarte = (categorie: string) => {
 
 // "Autre projet" : passe à la carte suivante du service en cours
 const carteSuivante = () => {
-  setAutoActive(false);
   if (!motActif) return;
   const cartes = CARTES[motActif];
   if (!cartes || cartes.length <= 1) return;
@@ -266,7 +220,6 @@ const carteSuivante = () => {
 
 // Flèche défaut : choisit une catégorie et un projet au hasard
 const choisirProjetAleatoire = () => {
-  setAutoActive(false);
   const categories = Object.keys(CARTES);
   const categorie = categories[Math.floor(Math.random() * categories.length)];
   const cartes = CARTES[categorie];
@@ -372,8 +325,6 @@ const choisirProjetAleatoire = () => {
 {/* IMAGE HERO — desktop toujours, mobile seulement si pas de catégorie active */}
 <div
   className={`group relative overflow-hidden h-[50vh] md:h-full ${motActif ? "hidden md:block" : "block"}`}
-  onMouseEnter={() => setCardHovered(true)}
-  onMouseLeave={() => setCardHovered(false)}
 >
   {carteActive.lien === "#" ? (
     <video
@@ -434,12 +385,6 @@ const choisirProjetAleatoire = () => {
       </div>
           </div>
   </div>
-  {/* Barre de progression auto-cycle */}
-  {autoActive && motActif === null && !cardHovered && (
-    <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-white/20">
-      <div className="h-full bg-white/60" style={{ width: `${autoProgress}%`, transition: 'width 0.1s linear' }} />
-    </div>
-  )}
 </div>
 
 {/* SCROLL HORIZONTAL mobile — visible seulement si catégorie active */}
