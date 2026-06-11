@@ -458,7 +458,7 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
     {[
       {
         titre: "Stratégie de croissance",
-        texte: "Comprendre l'organisation et le marché, puis le bâtir un plan d'action concret. Une série d'ateliers et d'activités pour connecter la stratégie d'affaires à l'exécution terrain.",
+        texte: "Comprendre l'organisation et le marché pour bâtir un plan d'action concret. Une série d'ateliers et d'activités pour connecter la stratégie d'affaires à l'exécution terrain.",
         icon: "/icons/rocket.webp"
       },
        {
