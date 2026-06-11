@@ -472,7 +472,7 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
         icon: "/icons/diplome.webp"
       },
       {
-        titre: "Images de marques",
+        titre: "Image de marque",
         texte: "Le 0 to 1, c'est passer d'une idée à une histoire. Mettre les rêves du monde au monde, ça mallume.",
         icon: "/icons/palette.webp"
       },
