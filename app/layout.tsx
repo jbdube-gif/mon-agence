@@ -48,9 +48,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" className={`${instrumentSans.variable} ${instrumentSerif.variable}`}>
   <head>
     <Script
+      id="gtm-init"
+      strategy="beforeInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `window.dataLayer=window.dataLayer||[];window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});`,
+      }}
+    />
+    <Script
       id="gtm-script"
       strategy="afterInteractive"
-      src="https://www.googletagmanager.com/gtag/js?id=GTM-WHKFW629"
+      src="https://www.googletagmanager.com/gtm.js?id=GTM-WHKFW629"
     />
   </head>
   <body>
