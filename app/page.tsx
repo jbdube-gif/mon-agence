@@ -463,7 +463,7 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
       },
        {
         titre: "Stratégie produit et UX",
-        texte: "De la recherche de marché à la priorisation de backlog, concevoir des apps, des sites et des assistants, c’est notre core.",
+        texte: "De la recherche de marché à la priorisation de backlog, concevoir des apps, des sites et des assistants, c’est un art.",
         icon: "/icons/phone.webp"
       },    
       {
@@ -473,7 +473,7 @@ className="relative shrink-0 w-[80vw] h-full snap-center rounded-xl overflow-hid
       },
       {
         titre: "Image de marque",
-        texte: "Le 0 to 1, c'est passer d'une idée à une histoire. Mettre les rêves du monde au monde, ça mallume.",
+        texte: "Le 0 to 1, c'est passer d'une idée à une histoire. Mettre les rêves du monde au monde, ça m'allume.",
         icon: "/icons/palette.webp"
       },
       {
@@ -580,8 +580,8 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
   <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 lg:grid lg:grid-cols-3 lg:overflow-visible">
     {[
       {
-        titre: "Consultation et planif stratégique",
-        texte: "Comprendre l’organisation et le marché, puis le transformer en plan d’action concret. Une série d’ateliers et d’activités pour connecter la stratégie d’affaires à l’exécution terrain.",
+        titre: "Consultation, audits et planif stratégique",
+        texte: "Impliquer un expert à des moments précis pour générer de l'alignement et avoir une perspective externe.",
       },
       {
         titre: "Banque d’heures",
