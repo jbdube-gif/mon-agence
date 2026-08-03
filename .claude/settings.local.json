@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(curl -s http://localhost:3000)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npm run *)",
+      "Bash(cp \"/Users/jeanbenoit/Desktop/Volteface - Web/Volteface - Emojis_Veo 3.1 Image to Video_2026-06-10_21-18-01.mp4\" /Users/jeanbenoit/mon-agence/public/hero.mp4)",
+      "Bash(ffprobe -v quiet -print_format json -show_streams /Users/jeanbenoit/mon-agence/public/hero.mp4)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['streams'][0].get\\('duration','?'\\), 'sec,', d['streams'][0].get\\('r_frame_rate','?'\\), 'fps'\\)\")",
+      "Bash(ffprobe /Users/jeanbenoit/mon-agence/public/hero.mp4)",
+      "Bash(CLAUDE_CODE_TMPDIR=/tmp ffprobe /Users/jeanbenoit/mon-agence/public/hero.mp4)",
+      "Bash(curl -s http://localhost:3001)"
+    ]
+  }
+}
