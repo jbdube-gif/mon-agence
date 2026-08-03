@@ -85,9 +85,9 @@ const CARTES: Record<string, {
     lien: "https://www.linkedin.com/posts/la-lmh_mon-bon-ami-jean-benoit-dub%C3%A9-a-%C3%A9t%C3%A9-bien-inspir%C3%A9-activity-7417742447088324609-ve5F?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAABOZeecB4PFDwrA5g7lRbZAwxhJTJvZW1DE",
   },    {
     intro: "Bonneau d'érable",
-    titre: "Nouveeau positionnement",
+    titre: "Nouveau positionnement",
     suffixe: "Branding et stratégie",
-    texte: "Création d'une nouvelle marque et d'un nouveau positionnement qui fonctionne en sirop.",
+    texte: "Création d'une nouvelle marque et d'un nouveau positionnement qui fonctionnent en sirop.",
     image: "/cas/bonneau.png",
     bg: "#F57A59",
     lien: "/bonneau.pdf",
