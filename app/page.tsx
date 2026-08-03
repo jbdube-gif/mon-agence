@@ -615,35 +615,31 @@ className="w-[min(80vw,320px)] shrink-0 snap-center lg:w-auto group relative bg-
 
 {/* CONTACT */}
 <section id="contact" className="px-5 md:px-12 py-24 scroll-mt-24">
-        <div className="w-fit mx-auto">
-          <p className="font-[family-name:var(--font-serif)] text-[#1e1e1e] text-3xl mb-4">
-            Contact
-          </p>
-          <h2 className="font-[family-name:var(--font-serif)] text-4xl md:text-7xl text-black leading-tight">
-            {`Comment on peut `}
-            <span className="vous-wrapper relative inline-block px-6 py-1">
-              <span
-                className="text-[#4159D2] font-[family-name:var(--font-sans)] font-bold"
-                style={{ letterSpacing: "-4.9px" }}
-              >
-                vous
-              </span>
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 50" preserveAspectRatio="none">
-                <ellipse cx="50" cy="25" rx="48" ry="22" fill="none" stroke="#1e1e1e" strokeWidth="0.5" className="ellipse-draw"/>
-              </svg>
-            </span>
-            {` aider?`}
-          </h2>
-          <div className="flex justify-end mt-4">
-            <a
-              href="mailto:jbdube@volteface.ca"
-              className="font-[family-name:var(--font-serif)] underline text-xl text-black"
-            >
-              Écrivez-nous
-            </a>
-          </div>
-        </div>
-      </section>    
+  <div className="w-fit mx-auto">
+    <p className="font-[family-name:var(--font-serif)] text-[#1e1e1e] text-3xl mb-4">
+      Contact
+    </p>
+    <h2 className="font-[family-name:var(--font-serif)] text-4xl md:text-7xl text-black leading-tight">
+      {`Comment on peut `}
+      <a href="mailto:jbdube@volteface.ca" aria-label="Nous écrire par courriel" className="vous-wrapper relative inline-block px-6 py-1 cursor-pointer no-underline">
+        <span className="text-[#4159D2] font-[family-name:var(--font-sans)] font-bold" style={{ letterSpacing: "-4.9px" }}>
+          vous
+        </span>
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true">
+          <ellipse cx="50" cy="25" rx="48" ry="22" fill="none" stroke="#1e1e1e" strokeWidth="0.5" className="ellipse-draw"/>
+        </svg>
+      </a>
+      {` aider?`}
+    </h2>
+    <div className="flex justify-end mt-4">
+      <a href="mailto:jbdube@volteface.ca" className="font-[family-name:var(--font-serif)] underline text-xl text-black">
+        Écrivez-nous
+      </a>
+    </div>
+  </div>
+</section>
+
+
 
       {/* FOOTER */}
       <footer className="border-t border-gray-200 px-5 md:px-12 py-8 flex justify-between items-center text-sm text-[#1e1e1e]">
