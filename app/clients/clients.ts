@@ -19,9 +19,9 @@ const PHOTO_TEMP = "/clients/photo-temporaire.webp";
 const L = "/clients/logos/";
 
 export const CLIENTS: Client[] = [
-  { nom: "Infopresse", service: "Formation IA en entreprise", descripteur: "I.A.", url: "https://www.infopresse.com", photo: PHOTO_TEMP, logo: L + "infopresse.svg" },
+  { nom: "Infopresse", service: "Formation IA en entreprise", descripteur: "I.A.", url: "https://www.infopresse.com", photo: "/clients/photo-infopresse.webp", logo: L + "infopresse.svg" },
   { nom: "Novavet", service: "Stratégie de commercialisation", descripteur: "VETS", url: "https://novavet.com", photo: PHOTO_TEMP, logo: L + "novavet.png" },
-  { nom: "FSA Ulaval", service: "Enseignement marketing et IA", descripteur: "UNI", url: "https://www.fsa.ulaval.ca", photo: "/clients/photo-fsa.webp", logo: L + "ulaval.svg", sousLogo: { texte: "Faculté des sciences de l'administration", couleur: "noir" } },
+  { nom: "FSA Ulaval", service: "Enseignement marketing et IA", descripteur: "UNI", url: "https://www.fsa.ulaval.ca", photo: "/clients/photo-fsa.webp", logo: L + "ulaval-blanc.svg", sousLogo: { texte: "Faculté des sciences de l'administration", couleur: "blanc" } },
   { nom: "Livesnap", service: "Go-to-market et veille concurrentielle", descripteur: "TECH", url: "https://www.livesnap.com", photo: "/clients/photo-livesnap.webp", logo: L + "livesnap.svg" },
   { nom: "Bonneau d'érable", service: "Nouveau positionnement de marque", descripteur: "FOOD", url: null, photo: PHOTO_TEMP, logo: L + "bonneau.png" },
   { nom: "GoRH / Humanify", service: "Marketing et croissance fractionnels", descripteur: "RH", url: "https://gorh.co", photo: PHOTO_TEMP, logo: L + "gorh.svg" },
