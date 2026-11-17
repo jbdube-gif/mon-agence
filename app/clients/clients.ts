@@ -1,0 +1,34 @@
+// Liste des clients affichés sur /clients, dans l'ordre d'affichage.
+// - service : le service acheté (colonne du centre, desktop seulement)
+// - descripteur : 7 lettres ou moins, affiché à droite (ex. VETS)
+// - url : site du client. Sans url, la tuile n'a pas de bouton « Visiter ».
+// - photo : chemin dans /public/clients (photo-temporaire.webp en attendant la vraie)
+// - logo : chemin dans /public/clients/logos. Sans logo (null), la tuile montre seulement la photo.
+
+export type Client = {
+  nom: string;
+  service: string | null;
+  descripteur: string | null;
+  url: string | null;
+  photo: string;
+  logo: string | null;
+  sousLogo?: { texte: string; couleur: "noir" | "blanc" }; // texte sous le logo (ex. nom de la faculté)
+  cadrage?: string; // position de la photo dans la tuile (CSS object-position), ex. "center top"
+};
+
+const PHOTO_TEMP = "/clients/photo-temporaire.webp";
+const L = "/clients/logos/";
+
+export const CLIENTS: Client[] = [
+  { nom: "Infopresse", service: "Formation IA en entreprise", descripteur: "I.A.", url: "https://www.infopresse.com", photo: "/clients/photo-infopresse.webp", logo: L + "infopresse.svg" },
+  { nom: "Novavet", service: "Stratégie de commercialisation", descripteur: "VETS", url: "https://novavet.com", photo: "/clients/photo-novavet.webp", logo: L + "novavet.png", cadrage: "center 15%" },
+  { nom: "FSA Ulaval", service: "Enseignement marketing et IA", descripteur: "UNI", url: "https://www.fsa.ulaval.ca", photo: "/clients/photo-fsa.webp", logo: L + "ulaval-blanc.svg", sousLogo: { texte: "Faculté des sciences de l'administration", couleur: "blanc" } },
+  { nom: "Livesnap", service: "Go-to-market et veille concurrentielle", descripteur: "TECH", url: "https://www.livesnap.com", photo: "/clients/photo-livesnap.webp", logo: L + "livesnap.svg" },
+  { nom: "Bonneau d'érable", service: "Nouveau positionnement de marque", descripteur: "FOOD", url: null, photo: PHOTO_TEMP, logo: L + "bonneau.png" },
+  { nom: "GoRH / Humanify", service: "Marketing et croissance fractionnels", descripteur: "RH", url: "https://gorh.co", photo: "/clients/photo-gorh.webp", logo: L + "gorh.svg" },
+  { nom: "Leonard", service: "Accompagnement IA et hackathon", descripteur: "WEB", url: "https://leonardagenceweb.com", photo: "/clients/photo-leonard.webp", logo: L + "leonard.svg" },
+  { nom: "Depatie Beauchemin Consultants", service: "Stratégie web et analytique", descripteur: "ING", url: "https://www.depatiebeauchemin.com", photo: "/clients/photo-dbc.webp", logo: L + "dbc.svg", cadrage: "center 27%" },
+  { nom: "Pigeons", service: "Application web et acquisition", descripteur: "TECH", url: "https://nouspigeons.ca", photo: "/clients/photo-pigeons.webp", logo: L + "pigeons-blanc.svg" },
+  { nom: "FSG Ulaval", service: "Placement média", descripteur: "UNI", url: "https://www.fsg.ulaval.ca", photo: "/clients/photo-fsg.webp", logo: L + "ulaval-blanc.svg", sousLogo: { texte: "Faculté des sciences et de génie", couleur: "blanc" } },
+  { nom: "Clinique Pelvia", service: "Engin de contenu et direction artistique", descripteur: "SANTÉ", url: "https://www.cliniquepelvia.com", photo: "/clients/photo-pelvia.webp", logo: L + "pelvia.png" },
+];

@@ -1,0 +1,61 @@
+/* Valeurs mesurées en JS (nav et titre), avec des valeurs de repli pour le premier rendu. */
+.page {
+  --nav-h: 96px;
+  --titre-h: min(24.6vw, 246px);
+  --sous-titre-h: 64px;
+  --barre-h: 40px;
+  /* Échelle du titre une fois collé (réglée dans PageClients.tsx) : les tuiles se collent juste dessous. */
+  --titre-reduit: 0.2833;
+  --haut-tuile: calc(var(--nav-h) + var(--titre-h) * var(--titre-reduit));
+}
+
+@media (min-width: 768px) {
+  .page {
+    --barre-h: 48px;
+    --sous-titre-h: 88px;
+  }
+}
+
+/* Bloc d'arrivée : pousse le titre vers le bas de l'écran, la barre de la tuile 01 dépasse en bas. */
+.intro {
+  min-height: calc(100svh - var(--nav-h) - var(--titre-h) - var(--sous-titre-h) - var(--barre-h));
+}
+
+.titre {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 10;
+  background: #ffffff;
+}
+
+.titreTexte {
+  display: block;
+  transform-origin: left top;
+  will-change: transform;
+}
+
+.tuile {
+  position: sticky;
+  top: var(--haut-tuile);
+  z-index: 20;
+  height: calc(var(--barre-h) + 62vw);
+}
+
+@media (min-width: 768px) {
+  .tuile {
+    height: calc(100svh - var(--haut-tuile));
+  }
+}
+
+.photo,
+.logo {
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .titreTexte,
+  .photo,
+  .logo {
+    will-change: auto;
+  }
+}
