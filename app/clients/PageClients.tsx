@@ -11,7 +11,6 @@ import styles from "./clients.module.css";
 const ZOOM_PHOTO_DEPART = 1.5; // la photo arrive zoomée, puis revient à 1
 const ZOOM_LOGO_DEPART = 1.15; // le logo arrive légèrement plus gros, puis revient à 1
 const TITRE_REDUIT = 0.425; // « Clients. » une fois collé : 42,5 % de sa taille d'arrivée
-const RAMPE_TITRE = 320; // px de scroll pendant lesquels le titre rapetisse
 
 // Même déclaration que la page à propos : les variables de police s'appliquent sur <main>.
 const instrumentSans = Instrument_Sans({
@@ -49,6 +48,7 @@ export default function PageClients() {
 
     let navH = 0;
     let titreH = 0;
+    let departTitre = 0; // position du titre dans la page avant qu'il se colle
     const mesurer = () => {
       navH = nav.offsetHeight;
       titreH = titre.offsetHeight;
@@ -56,6 +56,8 @@ export default function PageClients() {
       page.style.setProperty("--titre-h", `${titreH}px`);
       page.style.setProperty("--sous-titre-h", `${sousTitre.offsetHeight}px`);
       page.style.setProperty("--titre-reduit", String(TITRE_REDUIT));
+      // Le sous-titre suit le titre dans le flux : il donne la position de départ du titre.
+      departTitre = sousTitre.getBoundingClientRect().top + window.scrollY - titreH;
     };
     mesurer();
     const observateur = new ResizeObserver(mesurer);
@@ -75,11 +77,11 @@ export default function PageClients() {
     const image = (temps: number) => {
       lenis?.raf(temps);
 
-      // Titre : rapetisse en arrivant sous la nav
-      const hautTitre = titre.getBoundingClientRect().top;
+      // Titre : 0 à l'arrivée, 1 au moment où il se colle sous la nav
+      const course = Math.max(1, departTitre - navH);
       const pTitre = mouvementReduit
-        ? hautTitre <= navH + 1 ? 1 : 0
-        : borne(1 - (hautTitre - navH) / RAMPE_TITRE);
+        ? window.scrollY >= course ? 1 : 0
+        : borne(window.scrollY / course);
       titreTexte.style.transform = `scale(${1 - (1 - TITRE_REDUIT) * pTitre})`;
 
       // Tuiles : la photo dézoome et le logo rapetisse pendant que la tuile monte vers sa place
@@ -142,9 +144,7 @@ export default function PageClients() {
       <div ref={pageRef} className={styles.page}>
 
         {/* ARRIVÉE */}
-        <div className={`${styles.intro} px-5 md:px-12 flex flex-col justify-end`}>
-          <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-lg md:text-2xl mb-1 md:mb-2">MERCI !</p>
-        </div>
+        <div className={styles.intro} aria-hidden="true" />
 
         <h1 ref={titreRef} className={`${styles.titre} px-5 md:px-12 font-[family-name:var(--font-serif)] font-normal`}>
           <span
@@ -155,8 +155,8 @@ export default function PageClients() {
           </span>
         </h1>
 
-        <div ref={sousTitreRef} className="px-5 md:px-12 pt-3 pb-7 md:pt-5 md:pb-10">
-          <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-lg md:text-2xl">… ceux qui nous font confiance (et qu&apos;on aime en retour).</p>
+        <div ref={sousTitreRef} className="px-5 md:px-12 pt-1 pb-7 md:pt-2 md:pb-10">
+          <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-lg md:text-2xl">Clients, partenaires et même amis, pour la plupart.</p>
         </div>
 
         {/* TUILES */}
