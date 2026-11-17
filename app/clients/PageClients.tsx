@@ -182,13 +182,15 @@ export default function PageClients() {
                 alt=""
                 className={`${styles.photo} absolute inset-0 w-full h-full object-cover`}
               />
+              {client.logo && (
               <img
                 data-logo
                 src={client.logo}
                 alt={client.nom}
-                className={`${styles.logo} absolute left-1/2 top-1/2 w-[48vw] md:w-[min(26vw,380px)]`}
+                className={`${styles.logo} absolute left-1/2 top-1/2 w-[48vw] md:w-[min(26vw,380px)] max-h-[26vw] md:max-h-[min(11vw,150px)] object-contain`}
                 style={{ transform: "translate(-50%, -50%)" }}
               />
+              )}
               {/* Desktop : bouton « Visiter » en overlay, sous le descripteur, au survol de la tuile */}
               {client.url && (
                 <a
