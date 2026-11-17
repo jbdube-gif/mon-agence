@@ -143,7 +143,7 @@ export default function PageClients() {
 
         {/* ARRIVÉE */}
         <div className={`${styles.intro} px-5 md:px-12 flex flex-col justify-end`}>
-          <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-lg md:text-2xl mb-1 md:mb-2">[Surtitre]</p>
+          <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-lg md:text-2xl mb-1 md:mb-2">MERCI !</p>
         </div>
 
         <h1 ref={titreRef} className={`${styles.titre} px-5 md:px-12 font-[family-name:var(--font-serif)] font-normal`}>
@@ -156,7 +156,7 @@ export default function PageClients() {
         </h1>
 
         <div ref={sousTitreRef} className="px-5 md:px-12 pt-3 pb-7 md:pt-5 md:pb-10">
-          <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-lg md:text-2xl">[Sous-titre à venir]</p>
+          <p className="font-[family-name:var(--font-serif)] italic text-[#4159d2] text-lg md:text-2xl">… ceux qui nous font confiance (et qu&apos;on aime en retour).</p>
         </div>
 
         {/* TUILES */}
