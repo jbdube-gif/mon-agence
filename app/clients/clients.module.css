@@ -4,8 +4,9 @@
   --titre-h: min(24.6vw, 246px);
   --sous-titre-h: 64px;
   --barre-h: 40px;
-  /* Le titre collé fait 85 % de sa taille : les tuiles se collent juste dessous. */
-  --haut-tuile: calc(var(--nav-h) + var(--titre-h) * 0.85);
+  /* Échelle du titre une fois collé (réglée dans PageClients.tsx) : les tuiles se collent juste dessous. */
+  --titre-reduit: 0.425;
+  --haut-tuile: calc(var(--nav-h) + var(--titre-h) * var(--titre-reduit));
 }
 
 @media (min-width: 768px) {

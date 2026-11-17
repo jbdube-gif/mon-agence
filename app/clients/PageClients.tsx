@@ -10,8 +10,8 @@ import styles from "./clients.module.css";
 // Réglages du mouvement
 const ZOOM_PHOTO_DEPART = 1.5; // la photo arrive zoomée, puis revient à 1
 const ZOOM_LOGO_DEPART = 1.15; // le logo arrive légèrement plus gros, puis revient à 1
-const TITRE_REDUIT = 0.85; // « Clients. » rapetisse de 15 % une fois collé
-const RAMPE_TITRE = 240; // px de scroll pendant lesquels le titre rapetisse
+const TITRE_REDUIT = 0.425; // « Clients. » une fois collé : 42,5 % de sa taille d'arrivée
+const RAMPE_TITRE = 320; // px de scroll pendant lesquels le titre rapetisse
 
 // Même déclaration que la page à propos : les variables de police s'appliquent sur <main>.
 const instrumentSans = Instrument_Sans({
@@ -55,6 +55,7 @@ export default function PageClients() {
       page.style.setProperty("--nav-h", `${navH}px`);
       page.style.setProperty("--titre-h", `${titreH}px`);
       page.style.setProperty("--sous-titre-h", `${sousTitre.offsetHeight}px`);
+      page.style.setProperty("--titre-reduit", String(TITRE_REDUIT));
     };
     mesurer();
     const observateur = new ResizeObserver(mesurer);
@@ -74,7 +75,7 @@ export default function PageClients() {
     const image = (temps: number) => {
       lenis?.raf(temps);
 
-      // Titre : rapetisse de 15 % en arrivant sous la nav
+      // Titre : rapetisse en arrivant sous la nav
       const hautTitre = titre.getBoundingClientRect().top;
       const pTitre = mouvementReduit
         ? hautTitre <= navH + 1 ? 1 : 0
