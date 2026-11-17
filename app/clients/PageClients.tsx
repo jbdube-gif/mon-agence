@@ -189,13 +189,22 @@ export default function PageClients() {
                 className={`${styles.photo} absolute inset-0 w-full h-full object-cover`}
               />
               {client.logo && (
-              <img
-                data-logo
-                src={client.logo}
-                alt={client.nom}
-                className={`${styles.logo} absolute left-1/2 top-1/2 w-[48vw] md:w-[min(26vw,380px)] max-h-[26vw] md:max-h-[min(11vw,150px)] object-contain`}
-                style={{ transform: "translate(-50%, -50%)" }}
-              />
+                <div
+                  data-logo
+                  className={`${styles.logo} absolute left-1/2 top-1/2 flex flex-col items-center gap-2 md:gap-3`}
+                  style={{ transform: "translate(-50%, -50%)" }}
+                >
+                  <img
+                    src={client.logo}
+                    alt={client.nom}
+                    className="w-[48vw] md:w-[min(26vw,380px)] max-h-[26vw] md:max-h-[min(11vw,150px)] object-contain"
+                  />
+                  {client.sousLogo && (
+                    <p className={`text-center text-sm md:text-lg font-semibold whitespace-nowrap ${client.sousLogo.couleur === "blanc" ? "text-white" : "text-[#1e1e1e]"}`}>
+                      {client.sousLogo.texte}
+                    </p>
+                  )}
+                </div>
               )}
               {/* Desktop : bouton « Visiter » en overlay, sous le descripteur, au survol de la tuile */}
               {client.url && (
