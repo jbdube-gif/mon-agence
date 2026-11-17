@@ -10,7 +10,8 @@ import styles from "./clients.module.css";
 // Réglages du mouvement
 const ZOOM_PHOTO_DEPART = 1.5; // la photo arrive zoomée, puis revient à 1
 const ZOOM_LOGO_DEPART = 1.15; // le logo arrive légèrement plus gros, puis revient à 1
-const TITRE_REDUIT = 0.425; // « Clients. » une fois collé : 42,5 % de sa taille d'arrivée
+const TITRE_REDUIT = 0.425 / 3; // « Clients. » une fois collé : environ 14 % de sa taille d'arrivée
+const TITRE_TAILLE_MIN = 28; // px : plancher une fois collé (surtout pour le mobile)
 
 // Même déclaration que la page à propos : les variables de police s'appliquent sur <main>.
 const instrumentSans = Instrument_Sans({
@@ -49,13 +50,18 @@ export default function PageClients() {
     let navH = 0;
     let titreH = 0;
     let departTitre = 0; // position du titre dans la page avant qu'il se colle
+    let reduit = TITRE_REDUIT;
+    let decalage = 0; // marge négative du titre, compensée quand il rapetisse
     const mesurer = () => {
       navH = nav.offsetHeight;
       titreH = titre.offsetHeight;
       page.style.setProperty("--nav-h", `${navH}px`);
       page.style.setProperty("--titre-h", `${titreH}px`);
       page.style.setProperty("--sous-titre-h", `${sousTitre.offsetHeight}px`);
-      page.style.setProperty("--titre-reduit", String(TITRE_REDUIT));
+      const styleTitre = getComputedStyle(titreTexte);
+      reduit = Math.max(TITRE_REDUIT, TITRE_TAILLE_MIN / parseFloat(styleTitre.fontSize));
+      decalage = -parseFloat(styleTitre.marginLeft) || 0;
+      page.style.setProperty("--titre-reduit", String(reduit));
       // Le sous-titre suit le titre dans le flux : il donne la position de départ du titre.
       departTitre = sousTitre.getBoundingClientRect().top + window.scrollY - titreH;
     };
@@ -82,12 +88,12 @@ export default function PageClients() {
       const pTitre = mouvementReduit
         ? window.scrollY >= course ? 1 : 0
         : borne(window.scrollY / course);
-      titreTexte.style.transform = `scale(${1 - (1 - TITRE_REDUIT) * pTitre})`;
+      titreTexte.style.transform = `translateX(${decalage * pTitre}px) scale(${1 - (1 - reduit) * pTitre})`;
 
       // Tuiles : la photo dézoome et le logo rapetisse pendant que la tuile monte vers sa place
       if (!mouvementReduit) {
         const vh = window.innerHeight;
-        const haut = navH + titreH * TITRE_REDUIT;
+        const haut = navH + titreH * reduit;
         for (const t of tuiles) {
           const p = borne((vh - t.el.getBoundingClientRect().top) / Math.max(1, vh - haut));
           if (t.photo) t.photo.style.transform = `scale(${ZOOM_PHOTO_DEPART - (ZOOM_PHOTO_DEPART - 1) * p})`;

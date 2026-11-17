@@ -24,7 +24,7 @@ export const CLIENTS: Client[] = [
   { nom: "Livesnap", service: "Go-to-market et veille concurrentielle", descripteur: "TECH", url: "https://www.livesnap.com", photo: PHOTO_TEMP, logo: L + "livesnap.svg" },
   { nom: "Bonneau d'érable", service: "Nouveau positionnement de marque", descripteur: "FOOD", url: null, photo: PHOTO_TEMP, logo: L + "bonneau.png" },
   { nom: "GoRH / Humanify", service: "Marketing et croissance fractionnels", descripteur: "RH", url: "https://gorh.co", photo: PHOTO_TEMP, logo: L + "gorh.svg" },
-  { nom: "Leonard", service: "Accompagnement IA et hackathon", descripteur: "WEB", url: "https://leonardagenceweb.com", photo: PHOTO_TEMP, logo: L + "leonard.webp" },
+  { nom: "Leonard", service: "Accompagnement IA et hackathon", descripteur: "WEB", url: "https://leonardagenceweb.com", photo: PHOTO_TEMP, logo: L + "leonard.svg" },
   { nom: "Depatie Beauchemin Consultants", service: "Stratégie web et analytique", descripteur: "ING", url: "https://www.depatiebeauchemin.com", photo: PHOTO_TEMP, logo: L + "dbc.svg" },
   { nom: "Pigeons", service: "Application web et acquisition", descripteur: "TECH", url: "https://nouspigeons.ca", photo: PHOTO_TEMP, logo: L + "pigeons.svg" },
   { nom: "FSG Ulaval", service: "Placement média", descripteur: "UNI", url: "https://www.fsg.ulaval.ca", photo: PHOTO_TEMP, logo: null },
