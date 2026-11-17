@@ -124,7 +124,7 @@ export default function PageClients() {
           <Link href="/#expertise" className="hover:opacity-60 transition-opacity">expertise</Link>
           <Link href="/#approche" className="hover:opacity-60 transition-opacity">approche</Link>
           <Link href="/a-propos" className="hover:opacity-60 transition-opacity">à propos</Link>
-          <Link href="/clients" aria-current="page" className="underline underline-offset-4">clients ❤︎</Link>
+          <Link href="/clients" aria-current="page" className="underline underline-offset-4">clients<span aria-hidden="true" className="relative -top-1.5 ml-0.5 inline-block w-1.5 h-1.5 rounded-full bg-[#F57A59] align-top"></span></Link>
           <Link href="/#contact" className="hover:opacity-60 transition-opacity">contact</Link>
         </div>
         <button
@@ -141,7 +141,7 @@ export default function PageClients() {
             <Link href="/#expertise" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Expertise</Link>
             <Link href="/#approche" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Approche</Link>
             <Link href="/a-propos" className="hover:opacity-60 transition-opacity">À propos</Link>
-            <Link href="/clients" aria-current="page" className="underline underline-offset-4">Clients ❤︎</Link>
+            <Link href="/clients" aria-current="page" className="underline underline-offset-4">Clients<span aria-hidden="true" className="relative -top-1.5 ml-0.5 inline-block w-1.5 h-1.5 rounded-full bg-[#F57A59] align-top"></span></Link>
             <Link href="/#contact" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Contact</Link>
           </div>
         )}
