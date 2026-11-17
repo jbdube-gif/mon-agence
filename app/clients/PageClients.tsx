@@ -162,32 +162,17 @@ export default function PageClients() {
         {/* TUILES */}
         {CLIENTS.map((client, i) => (
           <article key={client.nom} data-tuile className={`${styles.tuile} group flex flex-col bg-white`}>
-            <div className="relative z-10 flex-none h-10 md:h-12 border-t border-[#1e1e1e] bg-white px-5 md:px-12 flex md:grid md:grid-cols-[repeat(3,minmax(0,1fr))_140px] md:gap-x-6 items-center justify-between gap-3">
+            <div className="relative z-10 flex-none h-10 md:h-12 border-t border-[#1e1e1e] bg-white px-5 md:px-12 flex md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_minmax(0,1fr)] md:gap-x-6 items-center justify-between gap-3">
               <div className="flex items-baseline gap-2 md:gap-2.5 min-w-0">
                 <span className="text-[11px] md:text-xs font-semibold">{String(i + 1).padStart(2, "0")}</span>
                 <h2 className="text-[17px] md:text-xl font-medium truncate">{client.nom}</h2>
               </div>
-              <p className={`hidden md:block text-base truncate ${client.service ? "" : "text-[#5e5e5e]"}`}>
+              <p className={`hidden md:block text-base text-center truncate ${client.service ? "" : "text-[#5e5e5e]"}`}>
                 {client.service ?? "[Service à compléter]"}
               </p>
-              <p className={`text-[13px] md:text-[15px] font-semibold tracking-[0.06em] ${client.descripteur ? "" : "text-[#5e5e5e]"}`}>
+              <p className={`md:justify-self-end text-right text-[13px] md:text-[15px] font-semibold tracking-[0.06em] ${client.descripteur ? "" : "text-[#5e5e5e]"}`}>
                 {client.descripteur ?? "[DESC.]"}
               </p>
-              {client.url ? (
-                <a
-                  href={client.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden md:flex justify-self-end items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#4159d2] text-white text-sm font-semibold opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 focus-visible:opacity-100 focus-visible:translate-y-0"
-                >
-                  Visiter
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                    <path d="M3 9L9 3M4 3h5v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-                  </svg>
-                </a>
-              ) : (
-                <span className="hidden md:block" />
-              )}
             </div>
 
             <div className="relative flex-1 min-h-0 overflow-hidden">
@@ -204,6 +189,20 @@ export default function PageClients() {
                 className={`${styles.logo} absolute left-1/2 top-1/2 w-[48vw] md:w-[min(26vw,380px)]`}
                 style={{ transform: "translate(-50%, -50%)" }}
               />
+              {/* Desktop : bouton « Visiter » en overlay, sous le descripteur, au survol de la tuile */}
+              {client.url && (
+                <a
+                  href={client.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden md:flex absolute z-10 top-4 right-12 items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#4159d2] text-white text-sm font-semibold opacity-0 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 focus-visible:opacity-100 focus-visible:translate-y-0"
+                >
+                  Visiter
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M3 9L9 3M4 3h5v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+                  </svg>
+                </a>
+              )}
             </div>
 
             {/* Sur mobile, toute la tuile mène au site du client */}
