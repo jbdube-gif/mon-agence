@@ -5,7 +5,7 @@
   --sous-titre-h: 64px;
   --barre-h: 40px;
   /* Échelle du titre une fois collé (réglée dans PageClients.tsx) : les tuiles se collent juste dessous. */
-  --titre-reduit: 0.1417;
+  --titre-reduit: 0.2833;
   --haut-tuile: calc(var(--nav-h) + var(--titre-h) * var(--titre-reduit));
 }
 

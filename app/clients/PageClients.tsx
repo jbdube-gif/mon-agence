@@ -10,7 +10,7 @@ import styles from "./clients.module.css";
 // Réglages du mouvement
 const ZOOM_PHOTO_DEPART = 1.5; // la photo arrive zoomée, puis revient à 1
 const ZOOM_LOGO_DEPART = 1.15; // le logo arrive légèrement plus gros, puis revient à 1
-const TITRE_REDUIT = 0.425 / 3; // « Clients. » une fois collé : environ 14 % de sa taille d'arrivée
+const TITRE_REDUIT = 0.85 / 3; // « Clients. » une fois collé : environ 28 % de sa taille d'arrivée
 const TITRE_TAILLE_MIN = 28; // px : plancher une fois collé (surtout pour le mobile)
 
 // Même déclaration que la page à propos : les variables de police s'appliquent sur <main>.
@@ -187,6 +187,7 @@ export default function PageClients() {
                 src={client.photo}
                 alt=""
                 className={`${styles.photo} absolute inset-0 w-full h-full object-cover`}
+                style={client.cadrage ? { objectPosition: client.cadrage } : undefined}
               />
               {client.logo && (
                 <div
