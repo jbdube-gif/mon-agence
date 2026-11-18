@@ -263,7 +263,7 @@ const choisirProjetAleatoire = () => {
     <a href="#expertise" className="hover:opacity-60 transition-opacity">expertise</a>
     <a href="#approche" className="hover:opacity-60 transition-opacity">approche</a>
     <a href="/a-propos" className="hover:opacity-60 transition-opacity">à propos</a>
-    <a href="/clients" className="hover:opacity-60 transition-opacity">clients<span aria-hidden="true" className="relative -top-1.5 ml-0.5 inline-block w-1.5 h-1.5 rounded-full bg-[#F57A59] align-top"></span></a>
+    <a href="/clients" className="hover:opacity-60 transition-opacity">clients</a>
     <a href="#contact" className="hover:opacity-60 transition-opacity">contact</a>
   </div>
 
@@ -284,7 +284,7 @@ const choisirProjetAleatoire = () => {
       <a href="#expertise" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Expertise</a>
       <a href="#approche" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Approche</a>
       <a href="/a-propos" className="hover:opacity-60 transition-opacity">À propos</a>
-      <a href="/clients" className="hover:opacity-60 transition-opacity">Clients<span aria-hidden="true" className="relative -top-1.5 ml-0.5 inline-block w-1.5 h-1.5 rounded-full bg-[#F57A59] align-top"></span></a>
+      <a href="/clients" className="hover:opacity-60 transition-opacity">Clients</a>
       <a href="#contact" onClick={() => setMenuOuvert(false)} className="hover:opacity-60 transition-opacity">Contact</a>
     </div>
   )}
