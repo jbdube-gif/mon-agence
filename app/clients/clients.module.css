@@ -6,13 +6,15 @@
   --barre-h: 40px;
   /* Échelle du titre une fois collé (réglée dans PageClients.tsx) : les tuiles se collent juste dessous. */
   --titre-reduit: 0.2833;
-  --haut-tuile: calc(var(--nav-h) + var(--titre-h) * var(--titre-reduit));
+  --ecart-titre: 14px; /* espace entre le titre collé et les tuiles */
+  --haut-tuile: calc(var(--nav-h) + var(--titre-h) * var(--titre-reduit) + var(--ecart-titre));
 }
 
 @media (min-width: 768px) {
   .page {
     --barre-h: 48px;
     --sous-titre-h: 88px;
+    --ecart-titre: 20px;
   }
 }
 
